@@ -233,7 +233,7 @@ export default function Page() {
         <HeroSwitch />
 
         <nav className="mount mount-d3 mb-10 border-b border-[var(--border)]">
-          <div className="flex gap-6 overflow-x-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+          <div className="flex gap-6 overflow-x-auto overflow-y-hidden [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
             {tabs.map((tab) => (
               <button
                 key={tab}
