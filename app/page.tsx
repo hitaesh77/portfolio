@@ -422,6 +422,20 @@ export default function Page() {
                   </a>
                 ))}
               </div>
+
+              <div className="mt-5 flex justify-end">
+                <a
+                  href="https://github.com/hitaesh77?tab=repositories"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group inline-flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.14em] text-[var(--text-faint)] no-underline transition-colors duration-300 hover:text-[var(--text-primary)]"
+                >
+                  <span>View more on GitHub</span>
+                  <span className="transition-transform duration-300 group-hover:translate-x-0.5">
+                    →
+                  </span>
+                </a>
+              </div>
             </section>
           )}
 
@@ -437,10 +451,10 @@ export default function Page() {
           {activeTab === "Resume" && (
             <section className="tab-in">
               <div className="grid gap-3">
-                <a href="#" className="group flex items-center justify-between gap-4 rounded-[10px] border border-[var(--border)] bg-[var(--surface)] p-5 no-underline transition-all duration-300 hover:-translate-y-0.5 hover:border-[var(--border-strong)] hover:shadow-[0_4px_20px_var(--shadow)]">
+                <a href="/resume.pdf" download="Hitaesh_Saravanarajan_Resume.pdf" className="group flex items-center justify-between gap-4 rounded-[10px] border border-[var(--border)] bg-[var(--surface)] p-5 no-underline transition-all duration-300 hover:-translate-y-0.5 hover:border-[var(--border-strong)] hover:shadow-[0_4px_20px_var(--shadow)]">
                   <div className="flex items-center gap-3 text-[13px] text-[var(--text-primary)]">
                     <span className="text-[var(--text-faint)] transition-colors duration-300 group-hover:text-[var(--text-primary)]"><FileIcon /></span>
-                    <span>Resume</span>
+                    <span>Download Resume</span>
                   </div>
                 </a>
               </div>
