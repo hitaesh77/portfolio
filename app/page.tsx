@@ -10,11 +10,11 @@ const tabs: TabName[] = ["About", "Experience", "Projects", "Tech", "Resume", "C
 
 const tickerItems = [
   "software engineering",
-  "backend systems",
-  "fullstack applications",
-  "data platforms",
-  "systems programming",
-  "performance engineering",
+  "backend APIs",
+  "fullstack apps",
+  "data heavy products",
+  "C and C++",
+  "performance focused code",
 ];
 
 const languageSkills = ["C", "C++", "Python", "Java", "TypeScript", "SystemVerilog", "RISCV Assembly"];
@@ -227,7 +227,7 @@ export default function Page() {
           </h1>
           <p className="mb-4 text-[13px] text-[var(--text-secondary)]">Computer Engineering @ Purdue University</p>
           <p className="m-0 max-w-md text-[13px] leading-[1.7] text-[var(--text-muted)]">
-            I'm a computer engineering student and software engineer interested in backend systems, infrastructure, and performance focused applications.
+            I’m a computer engineering student and software engineer who enjoys building useful software, from backend APIs and fullstack products to lower level projects in C and C++.
           </p>
         </header>
 
@@ -256,19 +256,19 @@ export default function Page() {
           {activeTab === "About" && (
             <section className="tab-in grid gap-4 text-[13px] leading-[1.8] text-[var(--text-muted)]">
               <p className="m-0">
-                I'm a Computer Engineering student at <span className="text-[var(--text-primary)]">Purdue University</span> and a software engineer interested in building useful, reliable, and well-designed software.
+                I'm a Computer Engineering student at <span className="text-[var(--text-primary)]">Purdue University</span>  who enjoys building software and learning how systems work under the hood.
+              </p>
+
+              <p className="m-0">                
+                Most of my experience has been in software engineering, from backend APIs and fullstack tools to healthcare integrations and projects in C, C++, Python, Java, TypeScript, and SystemVerilog.
               </p>
 
               <p className="m-0">
-                My experience spans backend APIs, fullstack internal tools, healthcare data integrations, and systems-oriented projects in C, C++, Python, Java, TypeScript, and SystemVerilog.
+                Recently, I’ve been using projects to explore the areas I want to get better at. <span className="text-[var(--text-primary)]">TickDB</span> has helped me learn about storage engines, <span className="text-[var(--text-primary)]">Volos</span> has helped me work with performance sensitive C++ code, and <span className="text-[var(--text-primary)]">Findify</span> has helped me build a more complete fullstack product.
               </p>
 
               <p className="m-0">
-                Recently, I’ve been especially interested in backend infrastructure and performance-focused software. Projects like <span className="text-[var(--text-primary)]">TickDB</span>, <span className="text-[var(--text-primary)]">Volos</span>, and <span className="text-[var(--text-primary)]">Findify</span> have helped me explore storage engines, low-latency computation, APIs, and data-heavy applications.
-              </p>
-
-              <p className="m-0">
-                I’m looking for software engineering roles where I can work on meaningful products, learn from strong engineers, and keep building deeper technical judgment across backend, systems, and product engineering.
+                I’m looking for software engineering roles where I can contribute to interesting products, learn from strong engineers, and keep growing as an engineer.
               </p>
 
               <div className="mt-8"><StatusHero /></div>
@@ -384,14 +384,14 @@ export default function Page() {
                   {
                     title: "TickDB",
                     stack: "C++ · Storage Engine",
-                    description: "Append-only time-series database optimized for low-latency market data ingestion, segmented storage, WAL durability, checksums, and indexed range queries.",
+                    description: "Append only time series database optimized for low latency market data ingestion, segmented storage, WAL durability, checksums, and indexed range queries.",
                     tag: "systems",
                     url: "https://github.com/hitaesh77/TickDB",
                   },
                   {
                     title: "Volos",
                     stack: "C++ · Python · FastAPI",
-                    description: "Low-latency options Greeks engine with an 11µs mean hot path for repeated pricing workloads, exposed through Python bindings and a FastAPI service.",
+                    description: "Low latency options Greeks engine with an 11µs mean hot path for repeated pricing workloads, exposed through Python bindings and a FastAPI service.",
                     tag: "performance",
                     url: "https://github.com/hitaesh77/Volos",
                   },
@@ -405,7 +405,7 @@ export default function Page() {
                   {
                     title: "Dual-Core RISC-V Processor",
                     stack: "SystemVerilog · FPGA",
-                    description: "Dual-core pipelined RISC-V processor with caches, forwarding, hazard detection, branch control, and FPGA validation at 71 MHz.",
+                    description: "Dual-core pipelined RISC-V processor with caches, forwarding, hazard detection, branch control, and a 71 MHz clock speed.",
                     tag: "computer architecture",
                     url: "https://gitshare.me/repo/074b76e0-3e86-401f-93ad-befa37215b2a",
                   },
