@@ -18,6 +18,24 @@
   --avatar-border: #e3d6c4;
 }
 
+:root.dark {
+  --bg: #0a0a0a;
+  --surface: #131313;
+  --surface-hover: #1a1a1a;
+  --text-primary: #ffffff;
+  --text-secondary: #b3b3b3;
+  --text-muted: #808080;
+  --text-faint: #4d4d4d;
+  --border: #1a1a1a;
+  --border-strong: #333333;
+  --accent: #ffffff;
+  --selection-bg: #ffffff;
+  --selection-text: #000000;
+  --shadow: rgba(0, 0, 0, 0.4);
+  --noise-opacity: 0.025;
+  --avatar-border: #1a1a1a;
+}
+
 .portfolio-root.dark {
   --bg: #0a0a0a;
   --surface: #131313;

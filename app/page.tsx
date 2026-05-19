@@ -177,6 +177,7 @@ export default function Page() {
 
   useEffect(() => {
     window.localStorage.setItem("portfolio-theme", theme);
+    document.documentElement.className = theme;
   }, [theme]);
 
   return (
