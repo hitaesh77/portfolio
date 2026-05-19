@@ -139,7 +139,7 @@ function StatusHero() {
       </div>
       <p className="mb-1 text-[13px] font-medium text-[var(--text-primary)]">TickDB</p>
       <p className="m-0 text-[12px] leading-[1.65] text-[var(--text-muted)]">
-        A write-optimized time-series storage engine for market data, built to explore memory layout, disk IO, indexing, and query performance.
+        A time series storage engine for market data, built to explore memory layout, disk IO, indexing, and query performance.
       </p>
     </div>
   );
@@ -270,6 +270,8 @@ export default function Page() {
               <p className="m-0">
                 I’m looking for software engineering roles where I can work on meaningful products, learn from strong engineers, and keep building deeper technical judgment across backend, systems, and product engineering.
               </p>
+
+              <div className="mt-8"><StatusHero /></div>
             </section>
           )}
 
@@ -370,6 +372,8 @@ export default function Page() {
                   </div>
                 </div>
               </div>
+
+              <div className="h-8"></div>
             </section>
           )}
 
@@ -437,6 +441,7 @@ export default function Page() {
                   </span>
                 </a>
               </div>
+              {/* <div className="h-8"></div> */}
             </section>
           )}
 
@@ -459,6 +464,7 @@ export default function Page() {
                   </div>
                 </a>
               </div>
+              <div className="h-8"></div>
             </section>
           )}
 
@@ -473,8 +479,10 @@ export default function Page() {
             </section>
           )}
         </div>
+        
+        {/* <TickerHero /> */}
 
-        <footer className="mt-24 flex justify-between gap-4 border-t border-[var(--border)] pt-6 font-mono text-[10px] uppercase tracking-[0.12em] text-[var(--text-faint)] max-sm:flex-col">
+        <footer className="mt-8 flex justify-between gap-4 border-t border-[var(--border)] pt-6 font-mono text-[10px] uppercase tracking-[0.12em] text-[var(--text-faint)] max-sm:flex-col">
           <span>© 2026</span>
           <span>Building useful and reliable software</span>
         </footer>
