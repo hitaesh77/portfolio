@@ -187,9 +187,9 @@ export default function Page() {
       <div className="mx-auto w-full max-w-[624px] px-6 pb-24 pt-20 max-sm:pt-14">
         <header className="mount mount-d1 mb-11">
           <div className="mb-6 flex items-start justify-between gap-6">
-            <div className="h-14 w-14 overflow-hidden rounded-[10px] border border-[var(--avatar-border)] contrast-[1.1] transition-all duration-500 hover:grayscale-0 hover:contrast-100">
+            <div className="h-14 w-14 overflow-hidden rounded-[10px] border border-[var(--avatar-border)] bg-white contrast-[1.1] transition-all duration-500 hover:grayscale-0 hover:contrast-100">
               <img
-                src="/avatar.png"
+                src="/new_avatar.png"
                 alt="Hitaesh"
                 className="block h-full w-full object-cover"
                 onError={(event) => {
@@ -288,7 +288,7 @@ export default function Page() {
                         date: "Summer 2026",
                         company: "Vanguard",
                         bullets: [
-                          "Incoming intern on the Corporate Systems team building internal platforms and tools"
+                          "Incoming intern on the Enterprise Growth Compliance team"
                         ],
                       },
                       {
