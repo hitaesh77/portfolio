@@ -12,15 +12,14 @@ const tickerItems = [
   "software engineering",
   "backend APIs",
   "fullstack apps",
-  "data heavy products",
+  "cloud applications",
   "C and C++",
-  "performance focused code",
+  "reliable systems",
 ];
 
-const languageSkills = ["C", "C++", "Python", "Java", "TypeScript", "SystemVerilog", "RISCV Assembly"];
-const backendSkills = ["Spring Boot", "FastAPI", "Flask", "PostgreSQL", "MySQL", "REST APIs"];
-const frontendSkills = ["React", "Angular", "React Native", "Tailwind CSS"];
-const toolsCloudSkills = ["Git", "AWS", "GCP", "Linux", "Docker", "Selenium", "BeautifulSoup"];
+const languageSkills = ["C++", "C", "Python", "Java", "TypeScript", "SQL", "SystemVerilog"];
+const frameworksCloudSkills = ["Spring Boot", "FastAPI", "React", "Next.js", "Angular", "AWS Lambda", "S3", "API Gateway", "Bedrock"];
+const databasesToolsSkills = ["PostgreSQL", "MySQL", "SQLite", "Git", "Linux", "Docker", "GCP", "REST APIs", "FHIR", "Jira"];
 function GithubIcon() {
   return (
     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
@@ -135,11 +134,11 @@ function StatusHero() {
           <span className="status-dot h-1.5 w-1.5 shrink-0 rounded-full bg-[var(--accent)]" />
           currently building
         </div>
-        <span className="whitespace-nowrap font-mono text-[10px] text-[var(--text-faint)]">~/projects/tickdb</span>
+        <span className="whitespace-nowrap font-mono text-[10px] text-[var(--text-faint)]">~/projects/scent-radar</span>
       </div>
-      <p className="mb-1 text-[13px] font-medium text-[var(--text-primary)]">TickDB</p>
+      <p className="mb-1 text-[13px] font-medium text-[var(--text-primary)]">Scent Radar</p>
       <p className="m-0 text-[12px] leading-[1.65] text-[var(--text-muted)]">
-        A time series storage engine for market data, built to explore memory layout, disk IO, indexing, and query performance.
+        A fragrance price-comparison platform powered by live, reliable scraping. I&apos;m currently developing the product and working to build a solid base of real users.
       </p>
     </div>
   );
@@ -227,7 +226,7 @@ export default function Page() {
           </h1>
           <p className="mb-4 text-[13px] text-[var(--text-secondary)]">Computer Engineering @ Purdue University</p>
           <p className="m-0 max-w-md text-[13px] leading-[1.7] text-[var(--text-muted)]">
-            I’m a computer engineering student and software engineer who enjoys building useful software, from backend APIs and fullstack products to lower level projects in C and C++.
+            I&apos;m a computer engineering student and software engineer who enjoys building useful software, from backend APIs and fullstack products to lower-level projects in C and C++.
           </p>
         </header>
 
@@ -256,19 +255,19 @@ export default function Page() {
           {activeTab === "About" && (
             <section className="tab-in grid gap-4 text-[13px] leading-[1.8] text-[var(--text-muted)]">
               <p className="m-0">
-                I'm a Computer Engineering student at <span className="text-[var(--text-primary)]">Purdue University</span>  who enjoys building software and learning how systems work under the hood.
+                I&apos;m a Computer Engineering student at <span className="text-[var(--text-primary)]">Purdue University</span>, graduating in May 2027, who enjoys building software and learning how systems work under the hood.
               </p>
 
               <p className="m-0">                
-                Most of my experience has been in software engineering, from backend APIs and fullstack tools to healthcare integrations and projects in C, C++, Python, Java, TypeScript, and SystemVerilog.
+                My experience spans cloud applications, backend APIs, fullstack tools, healthcare integrations, and systems projects in C++, C, Python, Java, TypeScript, SQL, and SystemVerilog.
               </p>
 
               <p className="m-0">
-                Recently, I’ve been using projects to explore the areas I want to get better at. <span className="text-[var(--text-primary)]">TickDB</span> has helped me learn about storage engines, <span className="text-[var(--text-primary)]">Volos</span> has helped me work with performance sensitive C++ code, and <span className="text-[var(--text-primary)]">Findify</span> has helped me build a more complete fullstack product.
+                Recently, I&apos;ve been building <span className="text-[var(--text-primary)]">Scent Radar</span>, a fragrance price-comparison platform focused on dependable live data and growing a real user base. I&apos;ve also explored performance-focused C++ through <span className="text-[var(--text-primary)]">Volos</span> and fullstack product development through <span className="text-[var(--text-primary)]">Findify</span>.
               </p>
 
               <p className="m-0">
-                I’m looking for software engineering roles where I can contribute to interesting products, learn from strong engineers, and keep growing as an engineer.
+                I&apos;m looking for software engineering roles where I can contribute to interesting products, learn from strong engineers, and keep growing as an engineer.
               </p>
 
               <div className="mt-8"><StatusHero /></div>
@@ -284,31 +283,40 @@ export default function Page() {
                   <div className="grid gap-6">
                     {[
                       {
-                        role: "Software Engineering Intern",
-                        date: "Summer 2026",
+                        role: "Software Engineer (Part-Time)",
+                        date: "Aug 2026 - Present",
                         company: "Vanguard",
                         bullets: [
-                          "Incoming intern on the Enterprise Growth Compliance team"
+                          "Continuing with Vanguard part-time during the Fall 2026 semester",
+                        ],
+                      },
+                      {
+                        role: "Software Engineering Intern",
+                        date: "May 2026 - Aug 2026",
+                        company: "Vanguard",
+                        bullets: [
+                          "Built an internal data generation tool with AWS Lambda, Amazon Bedrock, S3, API Gateway, and Angular for a daily compliance app covering 12 regulatory sectors",
+                          "Tuned prompts and added validation and post-processing so LLM output followed complex schemas, field relationships, and business rules across 500+ generated records",
+                          "Led backend work for a portfolio analysis app, building REST APIs and guarded LLM chat flows while organizing backend tasks and sprint progress in Jira",
                         ],
                       },
                       {
                         role: "Software Engineer (Part-Time)",
-                        date: "2025 - 2026",
+                        date: "Oct 2025 - Mar 2026",
                         company: "Kyron Medical",
                         bullets: [
-                          "Built backend scheduling and intake APIs for conversational voice agents handling 100+ daily patient calls",
-                          "Developed EHR integrations with ModMed and eClinicalWorks using FHIR APIs, PostgreSQL, and AWS services",
-                          "Engineered stateful scheduling workflows with fuzzy matching, LLM-powered intake parsing, and fallback logic for reliable appointment routing",
+                          "Built REST APIs for AI voice agents handling 100+ daily calls across intake, appointment lookup, and scheduling",
+                          "Integrated external healthcare systems using PostgreSQL and AWS to sync patient and appointment data",
+                          "Added fuzzy matching, LLM parsing, and fallback logic to handle unclear patient and scheduling requests",
                         ],
                       },
                       {
                         role: "Software Engineering Intern",
-                        date: "Summer 2025",
+                        date: "Jun 2025 - Aug 2025",
                         company: "Penske Truck Leasing",
                         bullets: [
-                          "Built a fullstack fleet inspection platform modernizing quality control workflows across 50K+ trucks",
-                          "Engineered Angular, Spring Boot, and SQL systems for dynamic inspection forms, reusable workflows, and reporting",
-                          "Worked directly with business stakeholders through prototyping, feedback cycles, and Agile development",
+                          "Built a fullstack app to streamline inspections across 50K+ trucks, projected to save 6K+ hours yearly",
+                          "Created reusable forms using Angular, Spring Boot, and SQL for multiple inspection types with centralized reporting",
                         ],
                       },
                     ].map((experience) => (
@@ -336,21 +344,11 @@ export default function Page() {
                   <div className="grid gap-6">
                     {[
                       {
-                        role: "Undergraduate TA",
-                        date: "2025 - Present",
-                        company: "ECE 270: Digital System Design",
-                        bullets: [
-                          "Mentoring 40+ students in SystemVerilog and FPGA prototyping",
-                          "Guiding debugging for synchronous design and complex HDL issues",
-                        ],
-                      },
-                      {
                         role: "Supplemental Instruction Leader",
-                        date: "2024 - 2025",
-                        company: "ECE 264: Advanced C Programming",
+                        date: "Nov 2024 - May 2025",
+                        company: "Purdue University · Advanced C Programming",
                         bullets: [
-                          "Led technical review sessions for 50+ students covering pointers, memory management, file I/O, and data structures",
-                          "Helped students debug C programs and understand lower level programming concepts through hands on examples",
+                          "Led weekly and exam review sessions for 100+ students covering pointers, memory management, recursion, file I/O, and data structures in C",
                         ],
                       },
                     ].map((experience) => (
@@ -382,30 +380,23 @@ export default function Page() {
               <div className="grid gap-2">
                 {[
                   {
-                    title: "TickDB",
-                    stack: "C++ · Storage Engine",
-                    description: "Append only time series database optimized for low latency market data ingestion, segmented storage, WAL durability, checksums, and indexed range queries.",
-                    tag: "systems",
-                    url: "https://github.com/hitaesh77/TickDB",
-                  },
-                  {
                     title: "Volos",
-                    stack: "C++ · Python · FastAPI",
-                    description: "Low latency options Greeks engine with an 11µs mean hot path for repeated pricing workloads, exposed through Python bindings and a FastAPI service.",
+                    stack: "C++",
+                    description: "C++ Black-Scholes pricing and Greeks engine with cache-friendly batch processing, numerical validation, and low-latency performance optimizations.",
                     tag: "performance",
                     url: "https://github.com/hitaesh77/Volos",
                   },
                   {
                     title: "Findify",
-                    stack: "Python · FastAPI · React",
-                    description: "Internship discovery platform that aggregates listings from 100+ company career sites per hour and exposes them through a searchable dashboard.",
+                    stack: "Python · FastAPI · Next.js · SQLite",
+                    description: "Fullstack internship tracker with scheduled web scraping, REST APIs, and notifications for new job postings.",
                     tag: "data platform",
                     url: "https://github.com/hitaesh77/findify",
                   },
                   {
                     title: "Dual-Core RISC-V Processor",
                     stack: "SystemVerilog · FPGA",
-                    description: "Dual-core pipelined RISC-V processor with caches, forwarding, hazard detection, branch control, and a 71 MHz clock speed.",
+                    description: "Dual-core pipelined RISC-V processor with caches, forwarding, hazard detection, and branch control; reached 71 MHz and passed 95%+ of validation tests.",
                     tag: "computer architecture",
                     url: "https://gitshare.me/repo/074b76e0-3e86-401f-93ad-befa37215b2a",
                   },
@@ -448,9 +439,8 @@ export default function Page() {
           {activeTab === "Tech" && (
             <section className="tab-in grid gap-8">
               <SkillGroup title="Languages" skills={languageSkills} />
-              <SkillGroup title="Backend" skills={backendSkills} />
-              <SkillGroup title="Frontend" skills={frontendSkills} />
-              <SkillGroup title="Tools / Cloud" skills={toolsCloudSkills} />
+              <SkillGroup title="Frameworks / Cloud" skills={frameworksCloudSkills} />
+              <SkillGroup title="Databases / Tools" skills={databasesToolsSkills} />
             </section>
           )}
 

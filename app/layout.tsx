@@ -14,8 +14,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Hitaesh's Portfolio",
-  description: "A showcase of software developement achievements",
+  title: "Hitaesh Saravanarajan | Software Engineer",
+  description: "Computer engineering student and software engineer building reliable fullstack, cloud, and systems software.",
 };
 
 export default function RootLayout({
