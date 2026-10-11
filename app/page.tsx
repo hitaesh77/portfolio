@@ -4,6 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import ThemeToggle from "./components/theme-toggle";
 import Projects from "./components/projects";
+import BombPartyCard from "./components/bomb-party-card";
 import { ArrowUpRight } from "lucide-react";
 
 type TabName = "About" | "Experience" | "Projects" | "Tech" | "Resume" | "Contact";
@@ -149,7 +150,7 @@ export default function Page() {
           </p>
         </header>
 
-        <nav aria-label="Writing and daily practice" className="mb-9 grid grid-cols-2 gap-3 max-[360px]:grid-cols-1">
+        <nav aria-label="Writing and daily practice" className="mb-4 grid grid-cols-2 gap-3 max-[360px]:grid-cols-1">
           {[
             { href: "/leetcode", title: "LeetCode", description: "My practice log" },
             { href: "/blog", title: "Blog", description: "My notes and thoughts" },
@@ -162,6 +163,8 @@ export default function Page() {
             </Link>
           ))}
         </nav>
+
+        <BombPartyCard />
 
         <nav className="mount mount-d3 mb-10 border-b border-[var(--border)]">
           <div className="flex gap-6 overflow-x-auto overflow-y-hidden [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">

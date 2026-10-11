@@ -1,0 +1,24 @@
+.card { position: relative; display: grid; grid-template-columns: 50px minmax(0, 1fr) auto; align-items: center; gap: 14px; overflow: hidden; min-height: 84px; margin-bottom: 36px; padding: 12px 18px; border: 1px solid #ddd8ca; border-radius: 10px; background: #f5f2e9; color: #242822; text-decoration: none; font-family: Arial, Helvetica, sans-serif; transition: border-color 180ms, box-shadow 180ms; }
+.card::before { content: ""; position: absolute; inset: 0 auto 0 0; width: 4px; background: #f4512c; }
+.card:hover { border-color: #f4512c; box-shadow: 0 6px 18px #24282212; }
+.card:focus-visible { outline: 2px solid #f4512c; outline-offset: 5px; }
+.copy { grid-column: 2; grid-row: 1; min-width: 0; }
+.title { margin: 0 0 4px; font-size: 21px; font-weight: 900; letter-spacing: -.055em; line-height: 1; color: #242822; }
+.title span { color: #f4512c; }
+.story { margin: 0; font-size: 10px; line-height: 1.6; color: #64685e; }
+.play { grid-column: 3; grid-row: 1; display: inline-flex; align-items: center; gap: 9px; padding: 9px 12px; border-radius: 6px; background: #242822; color: #f5f2e9; font-size: 10px; font-weight: 700; white-space: nowrap; }
+.play svg { transition: transform 180ms; }
+.card:hover .play svg { transform: translate(2px, -2px); }
+.art { grid-column: 1; grid-row: 1; width: 50px; }
+.art > svg { display: block; width: 100%; transition: transform 180ms; transform: rotate(-6deg); }
+.card:hover .art > svg { transform: rotate(2deg); }
+:global(html.dark) .card { --bomb-fuse: #d4cfbf; background: radial-gradient(ellipse at top right, #f4512c12, transparent 65%), #171916; border-color: #35382e; color: #f5f2e9; }
+:global(html.dark) .card::before { background: #ff7855; }
+:global(html.dark) .title { color: #f5f2e9; }
+:global(html.dark) .title span { color: #ff7855; }
+:global(html.dark) .story { color: #a5aa9a; }
+:global(html.dark) .play { background: #ff7855; color: #231d17; }
+:global(html.dark) .card:hover { border-color: #ff7855; box-shadow: 0 6px 24px #f4512c18; }
+:global(html.dark) .card:focus-visible { outline-color: #ff7855; }
+@media (max-width: 480px) { .card { grid-template-columns: 40px minmax(0, 1fr) auto; gap: 10px; padding: 12px 16px; } .art { width: 40px; } .title { font-size: 19px; } .play { padding: 9px; } .play > span { display: none; } }
+@media (prefers-reduced-motion: reduce) { .card, .play svg, .art > svg { transition: none; } }
