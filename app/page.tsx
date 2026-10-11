@@ -1,21 +1,14 @@
 "use client";
 
-import { useEffect, useState } from "react";
-
-const HERO_MODE: "ticker" | "status" = "ticker";
+import { useState } from "react";
+import Link from "next/link";
+import ThemeToggle from "./components/theme-toggle";
+import Projects from "./components/projects";
+import { ArrowUpRight } from "lucide-react";
 
 type TabName = "About" | "Experience" | "Projects" | "Tech" | "Resume" | "Contact";
 
 const tabs: TabName[] = ["About", "Experience", "Projects", "Tech", "Resume", "Contact"];
-
-const tickerItems = [
-  "software engineering",
-  "backend APIs",
-  "fullstack apps",
-  "cloud applications",
-  "C and C++",
-  "reliable systems",
-];
 
 const languageSkills = ["C++", "C", "Python", "Java", "TypeScript", "SQL", "SystemVerilog"];
 const frameworksCloudSkills = ["Spring Boot", "FastAPI", "React", "Next.js", "Angular", "AWS Lambda", "S3", "API Gateway", "Bedrock"];
@@ -44,30 +37,6 @@ function MailIcon() {
     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
       <rect width="20" height="16" x="2" y="4" rx="2" />
       <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
-    </svg>
-  );
-}
-
-function MoonIcon() {
-  return (
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z" />
-    </svg>
-  );
-}
-
-function SunIcon() {
-  return (
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-      <circle cx="12" cy="12" r="4" />
-      <path d="M12 2v2" />
-      <path d="M12 20v2" />
-      <path d="m4.93 4.93 1.41 1.41" />
-      <path d="m17.66 17.66 1.41 1.41" />
-      <path d="M2 12h2" />
-      <path d="M20 12h2" />
-      <path d="m6.34 17.66-1.41 1.41" />
-      <path d="m19.07 4.93-1.41 1.41" />
     </svg>
   );
 }
@@ -101,31 +70,6 @@ function ChipIcon() {
   );
 }
 
-function ArrowIcon() {
-  return (
-    <svg className="mt-1 shrink-0 text-[var(--text-muted)] opacity-0 translate-x-[-4px] translate-y-1 transition-all duration-300 group-hover:translate-x-0 group-hover:translate-y-0 group-hover:opacity-100" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M7 17L17 7" />
-      <path d="M7 7h10v10" />
-    </svg>
-  );
-}
-
-function TickerHero() {
-  const doubledItems = [...tickerItems, ...tickerItems];
-
-  return (
-    <div className="ticker-row mount mount-d2 mb-8 overflow-hidden border-y border-[var(--border)] py-3 [mask-image:linear-gradient(90deg,transparent,black_12%,black_88%,transparent)] hover:[&_.ticker-track]:[animation-play-state:paused]">
-      <div className="ticker-track flex w-max">
-        {doubledItems.map((item, index) => (
-          <span className="ticker-item pr-7 font-mono text-[10px] uppercase tracking-[0.12em] text-[var(--text-faint)] whitespace-nowrap" key={`${item}-${index}`}>
-            {item}
-          </span>
-        ))}
-      </div>
-    </div>
-  );
-}
-
 function StatusHero() {
   return (
     <div className="status-card mount mount-d2 mb-8 rounded-[14px] border border-[var(--border)] bg-[color-mix(in_srgb,var(--surface)_86%,transparent)] p-4 shadow-[0_12px_40px_var(--shadow)] backdrop-blur-[10px] transition-colors duration-300 hover:border-[var(--border-strong)]">
@@ -134,18 +78,14 @@ function StatusHero() {
           <span className="status-dot h-1.5 w-1.5 shrink-0 rounded-full bg-[var(--accent)]" />
           currently building
         </div>
-        <span className="whitespace-nowrap font-mono text-[10px] text-[var(--text-faint)]">~/projects/scent-radar</span>
+        <span className="whitespace-nowrap font-mono text-[10px] text-[var(--text-faint)]">personal project</span>
       </div>
       <p className="mb-1 text-[13px] font-medium text-[var(--text-primary)]">Scent Radar</p>
       <p className="m-0 text-[12px] leading-[1.65] text-[var(--text-muted)]">
-        A fragrance price-comparison platform powered by live, reliable scraping. I&apos;m currently developing the product and working to build a solid base of real users.
+        A fragrance price comparison app. I&apos;m working on reliable price data and getting it into the hands of people who would actually use it.
       </p>
     </div>
   );
-}
-
-function HeroSwitch() {
-  return HERO_MODE === "status" ? <StatusHero /> : <TickerHero />;
 }
 
 function SkillGroup({ title, skills }: { title: string; skills: string[] }) {
@@ -165,22 +105,8 @@ function SkillGroup({ title, skills }: { title: string; skills: string[] }) {
 
 export default function Page() {
   const [activeTab, setActiveTab] = useState<TabName>("About");
-  const [theme, setTheme] = useState<"light" | "dark">("light");
-
-  useEffect(() => {
-    const savedTheme = window.localStorage.getItem("portfolio-theme");
-    if (savedTheme === "dark" || savedTheme === "light") {
-      setTheme(savedTheme);
-    }
-  }, []);
-
-  useEffect(() => {
-    window.localStorage.setItem("portfolio-theme", theme);
-    document.documentElement.className = theme;
-  }, [theme]);
-
   return (
-    <main className={`portfolio-root ${theme} relative isolate min-h-screen bg-[var(--bg)] text-[var(--text-muted)] transition-colors duration-300`}>
+    <main className={`portfolio-root relative isolate min-h-screen bg-[var(--bg)] text-[var(--text-muted)] transition-colors duration-300`}>
       <div className="noise pointer-events-none fixed inset-0 z-[9999] opacity-[var(--noise-opacity)]" />
 
       <div className="mx-auto w-full max-w-[624px] px-6 pb-24 pt-20 max-sm:pt-14">
@@ -198,14 +124,7 @@ export default function Page() {
             </div>
 
             <div className="flex items-center gap-4 pt-2">
-              <button
-                type="button"
-                onClick={() => setTheme((currentTheme) => (currentTheme === "dark" ? "light" : "dark"))}
-                className="grid h-[18px] w-[18px] place-items-center border-0 bg-transparent p-0 text-[var(--text-faint)] transition-all duration-300 hover:rotate-12 hover:text-[var(--text-primary)]"
-                aria-label="Toggle theme"
-              >
-                {theme === "dark" ? <SunIcon /> : <MoonIcon />}
-              </button>
+              <ThemeToggle />
 
               <a href="https://github.com/hitaesh77" target="_blank" rel="noopener noreferrer" className="text-[var(--text-faint)] transition-colors duration-300 hover:text-[var(--text-primary)]" aria-label="GitHub">
                 <GithubIcon />
@@ -226,11 +145,23 @@ export default function Page() {
           </h1>
           <p className="mb-4 text-[13px] text-[var(--text-secondary)]">Computer Engineering @ Purdue University</p>
           <p className="m-0 max-w-md text-[13px] leading-[1.7] text-[var(--text-muted)]">
-            I&apos;m a computer engineering student and software engineer who enjoys building useful software, from backend APIs and fullstack products to lower-level projects in C and C++.
+            Hi! I&apos;m Hitaesh, a computer engineering student and software engineer. I love building software and understanding how it works down to the hardware. I build backend APIs and fullstack apps, and lately I&apos;ve been getting into AI and agents.
           </p>
         </header>
 
-        <HeroSwitch />
+        <nav aria-label="Writing and daily practice" className="mb-9 grid grid-cols-2 gap-3 max-[360px]:grid-cols-1">
+          {[
+            { href: "/leetcode", title: "LeetCode", description: "My practice log" },
+            { href: "/blog", title: "Blog", description: "My notes and thoughts" },
+          ].map((link) => (
+            <Link key={link.href} href={link.href} className="group rounded-[10px] border border-[var(--border)] px-4 py-3.5 no-underline transition-colors duration-300 hover:border-[var(--border-strong)] hover:bg-[var(--surface)] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--text-primary)]">
+              <span className="flex items-center justify-between gap-3 text-[12px] font-medium text-[var(--text-primary)]">
+                {link.title}<ArrowUpRight size={14} strokeWidth={1.5} aria-hidden="true" className="shrink-0 text-[var(--text-muted)] transition-transform duration-300 group-hover:translate-x-0.5" />
+              </span>
+              <span className="mt-1.5 block text-[10px] leading-relaxed text-[var(--text-secondary)]">{link.description}</span>
+            </Link>
+          ))}
+        </nav>
 
         <nav className="mount mount-d3 mb-10 border-b border-[var(--border)]">
           <div className="flex gap-6 overflow-x-auto overflow-y-hidden [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
@@ -255,19 +186,19 @@ export default function Page() {
           {activeTab === "About" && (
             <section className="tab-in grid gap-4 text-[13px] leading-[1.8] text-[var(--text-muted)]">
               <p className="m-0">
-                I&apos;m a Computer Engineering student at <span className="text-[var(--text-primary)]">Purdue University</span>, graduating in May 2027, who enjoys building software and learning how systems work under the hood.
-              </p>
-
-              <p className="m-0">                
-                My experience spans cloud applications, backend APIs, fullstack tools, healthcare integrations, and systems projects in C++, C, Python, Java, TypeScript, SQL, and SystemVerilog.
+                I&apos;m studying computer engineering at <span className="text-[var(--text-primary)]">Purdue University</span> and graduating in May 2027. I like making things that people can use, but I also like knowing what&apos;s happening underneath.
               </p>
 
               <p className="m-0">
-                Recently, I&apos;ve been building <span className="text-[var(--text-primary)]">Scent Radar</span>, a fragrance price-comparison platform focused on dependable live data and growing a real user base. I&apos;ve also explored performance-focused C++ through <span className="text-[var(--text-primary)]">Volos</span> and fullstack product development through <span className="text-[var(--text-primary)]">Findify</span>.
+                I&apos;m currently working part time at <span className="text-[var(--text-primary)]">Vanguard</span>, where I&apos;ve been building with AWS and finding ways to bring AI into developer workflows. Recently, I built a <span className="text-[var(--text-primary)]">Claude skill</span> that replaced a test data generation app, so developers can generate the data they need right in their workflow.
               </p>
 
               <p className="m-0">
-                I&apos;m looking for software engineering roles where I can contribute to interesting products, learn from strong engineers, and keep growing as an engineer.
+                On the hardware side, I built a <span className="text-[var(--text-primary)]">dual core RISC V processor</span> in SystemVerilog. Working through the pipeline, caches, and hazards gave me a much better understanding of what actually happens when code runs. I like being able to connect that back to the software I write.
+              </p>
+
+              <p className="m-0">
+                Outside of work and classes, I&apos;m building <span className="text-[var(--text-primary)]">Scent Radar</span>, a fragrance price comparison app. I&apos;m also looking for software engineering roles where I can build interesting things and learn from the people around me.
               </p>
 
               <div className="mt-8"><StatusHero /></div>
@@ -283,26 +214,27 @@ export default function Page() {
                   <div className="grid gap-6">
                     {[
                       {
-                        role: "Software Engineer (Part-Time)",
-                        date: "Aug 2026 - Present",
+                        role: "Software Engineer (Part Time)",
+                        date: "Aug 2026 to Present",
                         company: "Vanguard",
                         bullets: [
-                          "Continuing with Vanguard part-time during the Fall 2026 semester",
+                          "Working part time at Vanguard while studying at Purdue",
+                          "Built a Claude skill that replaced a test data generation app and brings data generation into developer workflows",
                         ],
                       },
                       {
                         role: "Software Engineering Intern",
-                        date: "May 2026 - Aug 2026",
+                        date: "May 2026 to Aug 2026",
                         company: "Vanguard",
                         bullets: [
                           "Built an internal data generation tool with AWS Lambda, Amazon Bedrock, S3, API Gateway, and Angular for a daily compliance app covering 12 regulatory sectors",
-                          "Tuned prompts and added validation and post-processing so LLM output followed complex schemas, field relationships, and business rules across 500+ generated records",
+                          "Tuned prompts and added validation and post processing so LLM output followed complex schemas, field relationships, and business rules across 500+ generated records",
                           "Led backend work for a portfolio analysis app, building REST APIs and guarded LLM chat flows while organizing backend tasks and sprint progress in Jira",
                         ],
                       },
                       {
-                        role: "Software Engineer (Part-Time)",
-                        date: "Oct 2025 - Mar 2026",
+                        role: "Software Engineer (Part Time)",
+                        date: "Oct 2025 to Mar 2026",
                         company: "Kyron Medical",
                         bullets: [
                           "Built REST APIs for AI voice agents handling 100+ daily calls across intake, appointment lookup, and scheduling",
@@ -312,7 +244,7 @@ export default function Page() {
                       },
                       {
                         role: "Software Engineering Intern",
-                        date: "Jun 2025 - Aug 2025",
+                        date: "Jun 2025 to Aug 2025",
                         company: "Penske Truck Leasing",
                         bullets: [
                           "Built a fullstack app to streamline inspections across 50K+ trucks, projected to save 6K+ hours yearly",
@@ -328,7 +260,7 @@ export default function Page() {
                         <p className="mb-3 mt-0 text-[12px] text-[var(--text-muted)]">{experience.company}</p>
                         <ul className="m-0 grid list-none gap-1.5 p-0">
                           {experience.bullets.map((bullet) => (
-                            <li className="flex gap-2.5 text-[12px] leading-[1.55] text-[var(--text-muted)] before:text-[var(--text-faint)] before:content-['-']" key={bullet}>
+                            <li className="flex gap-2.5 text-[12px] leading-[1.55] text-[var(--text-muted)] before:text-[var(--text-faint)] before:content-['•']" key={bullet}>
                               {bullet}
                             </li>
                           ))}
@@ -345,7 +277,7 @@ export default function Page() {
                     {[
                       {
                         role: "Supplemental Instruction Leader",
-                        date: "Nov 2024 - May 2025",
+                        date: "Nov 2024 to May 2025",
                         company: "Purdue University · Advanced C Programming",
                         bullets: [
                           "Led weekly and exam review sessions for 100+ students covering pointers, memory management, recursion, file I/O, and data structures in C",
@@ -360,7 +292,7 @@ export default function Page() {
                         <p className="mb-3 mt-0 text-[12px] text-[var(--text-muted)]">{experience.company}</p>
                         <ul className="m-0 grid list-none gap-1.5 p-0">
                           {experience.bullets.map((bullet) => (
-                            <li className="flex gap-2.5 text-[12px] leading-[1.55] text-[var(--text-muted)] before:text-[var(--text-faint)] before:content-['-']" key={bullet}>
+                            <li className="flex gap-2.5 text-[12px] leading-[1.55] text-[var(--text-muted)] before:text-[var(--text-faint)] before:content-['•']" key={bullet}>
                               {bullet}
                             </li>
                           ))}
@@ -375,66 +307,7 @@ export default function Page() {
             </section>
           )}
 
-          {activeTab === "Projects" && (
-            <section className="tab-in">
-              <div className="grid gap-2">
-                {[
-                  {
-                    title: "Volos",
-                    stack: "C++",
-                    description: "C++ Black-Scholes pricing and Greeks engine with cache-friendly batch processing, numerical validation, and low-latency performance optimizations.",
-                    tag: "performance",
-                    url: "https://github.com/hitaesh77/Volos",
-                  },
-                  {
-                    title: "Findify",
-                    stack: "Python · FastAPI · Next.js · SQLite",
-                    description: "Fullstack internship tracker with scheduled web scraping, REST APIs, and notifications for new job postings.",
-                    tag: "data platform",
-                    url: "https://github.com/hitaesh77/findify",
-                  },
-                  {
-                    title: "Dual-Core RISC-V Processor",
-                    stack: "SystemVerilog · FPGA",
-                    description: "Dual-core pipelined RISC-V processor with caches, forwarding, hazard detection, and branch control; reached 71 MHz and passed 95%+ of validation tests.",
-                    tag: "computer architecture",
-                    url: "https://gitshare.me/repo/074b76e0-3e86-401f-93ad-befa37215b2a",
-                  },
-                ].map((project) => (
-                  <a href={project.url} target="_blank" rel="noopener noreferrer" key={project.title} className="group no-underline">
-                    <div className="rounded-[10px] border border-transparent p-4 transition-all duration-300 hover:translate-x-1 hover:border-[var(--border)] hover:bg-[var(--surface-hover)]">
-                      <div className="flex items-start justify-between gap-4">
-                        <div>
-                          <div className="mb-1 flex flex-wrap items-center gap-3">
-                            <h3 className="m-0 text-[13px] font-medium text-[var(--text-primary)]">{project.title}</h3>
-                            <span className="font-mono text-[9px] uppercase tracking-[0.12em] text-[var(--text-faint)]">{project.stack}</span>
-                          </div>
-                          <p className="mb-2 mt-0 text-[12px] leading-[1.55] text-[var(--text-muted)]">{project.description}</p>
-                          {project.tag && <span className="font-mono text-[10px] text-[var(--text-faint)]">{project.tag}</span>}
-                        </div>
-                        <ArrowIcon />
-                      </div>
-                    </div>
-                  </a>
-                ))}
-              </div>
-
-              <div className="mt-5 flex justify-end">
-                <a
-                  href="https://github.com/hitaesh77?tab=repositories"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group inline-flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.14em] text-[var(--text-faint)] no-underline transition-colors duration-300 hover:text-[var(--text-primary)]"
-                >
-                  <span>View more on GitHub</span>
-                  <span className="transition-transform duration-300 group-hover:translate-x-0.5">
-                    →
-                  </span>
-                </a>
-              </div>
-              {/* <div className="h-8"></div> */}
-            </section>
-          )}
+          {activeTab === "Projects" && <Projects />}
 
           {activeTab === "Tech" && (
             <section className="tab-in grid gap-8">
@@ -461,7 +334,7 @@ export default function Page() {
           {activeTab === "Contact" && (
             <section className="tab-in">
               <p className="mb-8 mt-0 max-w-[360px] text-[13px] leading-[1.8] text-[var(--text-muted)]">
-                I'm currently looking for software engineering opportunities where I can contribute to backend systems, fullstack products, infrastructure, or performance focused engineering work.
+                I&apos;m currently looking for software engineering opportunities where I can contribute to backend systems, fullstack products, infrastructure, or performance focused engineering work.
               </p>
               <a href="mailto:hitaesh.sara@gmail.com" className="relative text-[14px] font-medium text-[var(--text-primary)] no-underline after:absolute after:bottom-[-2px] after:left-0 after:h-px after:w-0 after:bg-[var(--accent)] after:transition-all after:duration-300 hover:after:w-full">
                 hitaesh.sara@gmail.com
@@ -470,11 +343,9 @@ export default function Page() {
           )}
         </div>
         
-        {/* <TickerHero /> */}
-
         <footer className="mt-8 flex justify-between gap-4 border-t border-[var(--border)] pt-6 font-mono text-[10px] uppercase tracking-[0.12em] text-[var(--text-faint)] max-sm:flex-col">
           <span>© 2026</span>
-          <span>Building useful and reliable software</span>
+          <span>Hitaesh Saravanarajan</span>
         </footer>
       </div>
     </main>

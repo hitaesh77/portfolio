@@ -140,20 +140,6 @@ body {
   }
 }
 
-.ticker-track {
-  animation: ticker 24s linear infinite;
-}
-
-@keyframes ticker {
-  from {
-    transform: translateX(0);
-  }
-
-  to {
-    transform: translateX(-50%);
-  }
-}
-
 .status-dot {
   box-shadow: 0 0 0 0 color-mix(in srgb, var(--accent) 30%, transparent);
   animation: pulseDot 2.4s ease-out infinite;
