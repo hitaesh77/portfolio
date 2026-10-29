@@ -18,6 +18,143 @@ export const sampleContent = false;
 
 export const blogEntries: BlogEntry[] = [
   {
+    "id": "a4d9f20",
+    "date": "2026-10-28",
+    "title": "what does it mean to be good at math?",
+    "slug": "what-does-it-mean-to-be-good-at-math",
+    "excerpt": "Thoughts on pattern recognition, intuition, and what being good at math can teach us about engineering.",
+    "content": [
+      {
+        "type": "paragraph",
+        "text": "I have always thought of myself as being good at math. While I haven’t done any math competitions or Olympiads or anything, I have always found math to be one of the more comfortable subjects throughout school and college. I do believe that my GPA throughout high school and college can attest to my math skills, at least at an academic level. But recently, I had a conversation with my roommate, who I have also always considered to be naturally gifted at math, about what it actually means to be good at math. And that got me thinking…"
+      },
+      {
+        "type": "paragraph",
+        "text": "For context, my roommate and I were in the same calculus course in high school, and we were the type to show up late to class, half-ass the homework, barely study, and somehow consistently score better than most of the class. When we talked about why we were good at math, the argument my roommate brought up was pattern recognition."
+      },
+      {
+        "type": "paragraph",
+        "text": "I did not particularly like that answer. To me, pattern recognition seemed to imply a lot of hard work and practice, eventually leading to the ability to identify the underlying concept or pattern we are supposed to use. But our experience in high school seemed to directly contradict that. We barely practiced, yet still performed well. However, thinking back, the most difficult part of that class was not necessarily the calculus concepts themselves, but the algebra required to solve the problems, which we had both recently spent a lot of time reviewing for SAT prep. So maybe we had developed that pattern recognition through practice, just not in the calculus classroom. That meant pattern recognition was still on the table."
+      },
+      {
+        "type": "paragraph",
+        "text": "My roommate and I also watched a good number of videos about famous mathematicians like Gauss, Euler, Newton, Ramanujan, and more. What fascinated me about these individuals was their ability to discover, develop, or formalize entirely new mathematical concepts. These mathematicians are legendary and undoubtedly some of the best to ever do it, but what actually made them so good? Was it simply a tremendous amount of interest that led to practice, which eventually led to extraordinary pattern recognition? That argument could certainly be made, but I couldn't help feeling that there was something more to it. Some sort of intuition, or perhaps an ability to visualize and reason about mathematical ideas in ways that other people couldn't."
+      },
+      {
+        "type": "paragraph",
+        "text": "I also have friends who struggled quite a bit in that same high school calculus class. Even after hours of studying and working through practice problems, they still struggled to score highly on exams. These are intelligent individuals, so what exactly made math more difficult for them? Was it a lack of pattern recognition when approaching unfamiliar problems? Was it a lack of intuition? Or was it an inability to visualize what was actually happening mathematically, such as understanding differentiation as a measure of instantaneous change or integration as the accumulation of quantities, often represented by the area under a curve?"
+      },
+      {
+        "type": "paragraph",
+        "text": "I think there is an important distinction here between knowing how to solve a problem and understanding why the solution works. Someone might recognize a certain type of integral and immediately know which technique to apply, but does that necessarily mean they understand the mathematics behind it? And conversely, someone might understand the underlying concept perfectly but struggle to perform the calculations quickly. Which of these people is better at math?"
+      },
+      {
+        "type": "paragraph",
+        "text": "After discussing this with my roommate and thinking about it myself, I still think it is an open question, but I have a few thoughts on how it can be approached."
+      },
+      {
+        "type": "heading",
+        "text": "the role of intuition"
+      },
+      {
+        "type": "paragraph",
+        "text": "I think being good at math has a lot to do with intuition."
+      },
+      {
+        "type": "paragraph",
+        "text": "My sister, who is significantly younger than me, occasionally asks for help with her math homework. I find that even when I don't remember the formulas required to solve a problem, I can often reason my way through it. For example, she recently had a problem involving finding the area of a sector of a circle. I didn't immediately remember the formula, but I understood that a sector was simply a fraction of the full circle, and that the fraction depended on the angle. From there, I could reason my way to the formula using what I already knew about circles and angles."
+      },
+      {
+        "type": "paragraph",
+        "text": "My sister, on the other hand, was seeing much of this content for the first time. She hadn't worked much with radians and was still relatively new to algebra, so naturally, the problem was more difficult for her."
+      },
+      {
+        "type": "paragraph",
+        "text": "What interests me about this example is that I wasn't necessarily remembering a specific formula or recognizing a problem I had solved before. Instead, I was using my understanding of the underlying concepts to reconstruct something I had forgotten. I didn't need to remember the solution because I understood enough to derive it."
+      },
+      {
+        "type": "paragraph",
+        "text": "And I think that distinction is important."
+      },
+      {
+        "type": "paragraph",
+        "text": "But reducing the entire question to intuition feels like a half-assed answer, to be honest. What does intuition even mean in this context? Is it some natural ability to understand mathematical ideas, or is it something that can be developed through experience? Does intuition come from understanding, or does understanding come from intuition?"
+      },
+      {
+        "type": "paragraph",
+        "text": "My roommate's argument about pattern recognition starts to make more sense here. Maybe pattern recognition is actually one of the ways we develop intuition. The more problems we solve, the more relationships we begin to recognize, and eventually those relationships become so familiar that we no longer have to consciously think about them."
+      },
+      {
+        "type": "paragraph",
+        "text": "But I still don't think the two are exactly the same."
+      },
+      {
+        "type": "paragraph",
+        "text": "To me, pattern recognition is often about recognizing something familiar and knowing how to respond to it. Intuition feels like something deeper. It is the ability to reason about a concept, understand how its different parts relate to one another, and use that understanding even when faced with something unfamiliar."
+      },
+      {
+        "type": "paragraph",
+        "text": "Of course, this distinction isn't absolute. Recognizing patterns can help build a deeper understanding, and intuition itself might be built from patterns we have internalized over time. But I think there is a difference between memorizing how a type of problem is solved and developing an understanding strong enough that you can reason through problems you have never seen before."
+      },
+      {
+        "type": "paragraph",
+        "text": "Maybe some people are naturally better at developing that understanding. Maybe they pick up on relationships faster, connect ideas more easily, or find it easier to visualize abstract concepts. But I also think intuition can be trained, especially when we focus less on memorizing procedures and more on understanding why those procedures work."
+      },
+      {
+        "type": "heading",
+        "text": "how does this translate to engineering?"
+      },
+      {
+        "type": "paragraph",
+        "text": "I want to take this one step further and talk about how this relates to engineering."
+      },
+      {
+        "type": "paragraph",
+        "text": "My roommate is a mechanical engineering student, and I am a computer engineering student. Being good at math has certainly helped both of us throughout our respective courses. But on a broader scale, I think the more valuable skill is not necessarily being able to solve mathematical problems quickly. It is being able to reason through complicated problems, break them down, and understand the systems behind them."
+      },
+      {
+        "type": "paragraph",
+        "text": "This is where I think the distinction between intuition and pattern recognition becomes especially important."
+      },
+      {
+        "type": "paragraph",
+        "text": "In engineering, you are constantly faced with problems that don't necessarily look like anything you have seen before. You can memorize formulas, algorithms, and design patterns, but eventually you will run into something where there isn't an immediately obvious solution. At that point, simply recognizing a familiar pattern might not be enough."
+      },
+      {
+        "type": "paragraph",
+        "text": "You need to understand the underlying principles well enough to reason your way toward a solution."
+      },
+      {
+        "type": "paragraph",
+        "text": "For example, when working with computer architecture, I think there is a meaningful difference between knowing how a processor pipeline works and actually understanding why it works the way it does. You might know what forwarding and stalling are, and when they are typically used. But understanding the dependencies between instructions, how data moves through the pipeline, and why certain hazards occur allows you to reason about entirely new architectural problems."
+      },
+      {
+        "type": "paragraph",
+        "text": "That is the kind of understanding I find most valuable. The kind where you can forget the exact implementation or formula but still have enough of a foundation to figure things out yourself."
+      },
+      {
+        "type": "paragraph",
+        "text": "And perhaps that is what I really mean by intuition. Not some mysterious ability to immediately know the answer, but a sufficiently deep understanding of the fundamentals that reasoning begins to feel natural."
+      },
+      {
+        "type": "paragraph",
+        "text": "I still don't know whether intuition is fundamentally different from pattern recognition, or whether it is simply what pattern recognition becomes after enough experience and understanding. There is probably a lot more nuance to it than either of our original arguments accounted for."
+      },
+      {
+        "type": "paragraph",
+        "text": "But I do think that being good at math is about more than recognizing which method to apply. It is about understanding concepts deeply enough that you can reason beyond the problems you have already seen."
+      },
+      {
+        "type": "paragraph",
+        "text": "And I think the same idea applies to engineering."
+      },
+      {
+        "type": "paragraph",
+        "text": "That also brings up another question I have been thinking about: What actually makes someone a good engineer? I have a few thoughts on that too, which I plan to write about soon."
+      }
+    ]
+  },
+  {
     "id": "e8b6c31",
     "date": "2026-10-16",
     "title": "how i took down a client's ai receptionist",
