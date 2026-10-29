@@ -26,11 +26,18 @@ export const blogEntries: BlogEntry[] = [
     "content": [
       {
         "type": "paragraph",
-        "text": "I have always thought of myself as being good at math. While I haven’t done any math competitions or Olympiads or anything, I have always found math to be one of the more comfortable subjects throughout school and college. I do believe that my GPA throughout high school and college can attest to my math skills, at least at an academic level. But recently, I had a conversation with my roommate, who I have also always considered to be naturally gifted at math, about what it actually means to be good at math. And that got me thinking…"
+        "text": [
+          "I have always thought of myself as being good at math. While I haven’t done any math competitions or Olympiads or anything, I have always found math to be one of the more comfortable subjects throughout school and college. I do believe that my GPA throughout high school and college can attest to my math skills, at least at an academic level. But recently, I had a conversation with my roommate, ",
+          {
+            "text": "Vikash Gunalan",
+            "href": "https://www.linkedin.com/in/vikash-gunalan/"
+          },
+          ", who I have also always considered to be naturally gifted at math, about what it actually means to be good at math. And that got me thinking…"
+        ]
       },
       {
         "type": "paragraph",
-        "text": "For context, my roommate and I were in the same calculus course in high school, and we were the type to show up late to class, half-ass the homework, barely study, and somehow consistently score better than most of the class. When we talked about why we were good at math, the argument my roommate brought up was pattern recognition."
+        "text": "For context, Vikash and I were in the same calculus course in high school, and we were the type to show up late to class, half-ass the homework, barely study, and somehow consistently score better than most of the class. When we talked about why we were good at math, the argument Vikash brought up was pattern recognition."
       },
       {
         "type": "paragraph",
@@ -38,7 +45,7 @@ export const blogEntries: BlogEntry[] = [
       },
       {
         "type": "paragraph",
-        "text": "My roommate and I also watched a good number of videos about famous mathematicians like Gauss, Euler, Newton, Ramanujan, and more. What fascinated me about these individuals was their ability to discover, develop, or formalize entirely new mathematical concepts. These mathematicians are legendary and undoubtedly some of the best to ever do it, but what actually made them so good? Was it simply a tremendous amount of interest that led to practice, which eventually led to extraordinary pattern recognition? That argument could certainly be made, but I couldn't help feeling that there was something more to it. Some sort of intuition, or perhaps an ability to visualize and reason about mathematical ideas in ways that other people couldn't."
+        "text": "Vikash and I also watched a good number of videos about famous mathematicians like Gauss, Euler, Newton, Ramanujan, and more. What fascinated me about these individuals was their ability to discover, develop, or formalize entirely new mathematical concepts. These mathematicians are legendary and undoubtedly some of the best to ever do it, but what actually made them so good? Was it simply a tremendous amount of interest that led to practice, which eventually led to extraordinary pattern recognition? That argument could certainly be made, but I couldn't help feeling that there was something more to it. Some sort of intuition, or perhaps an ability to visualize and reason about mathematical ideas in ways that other people couldn't."
       },
       {
         "type": "paragraph",
@@ -50,7 +57,7 @@ export const blogEntries: BlogEntry[] = [
       },
       {
         "type": "paragraph",
-        "text": "After discussing this with my roommate and thinking about it myself, I still think it is an open question, but I have a few thoughts on how it can be approached."
+        "text": "After discussing this with Vikash and thinking about it myself, I still think it is an open question, but I have a few thoughts on how it can be approached."
       },
       {
         "type": "heading",
@@ -82,7 +89,7 @@ export const blogEntries: BlogEntry[] = [
       },
       {
         "type": "paragraph",
-        "text": "My roommate's argument about pattern recognition starts to make more sense here. Maybe pattern recognition is actually one of the ways we develop intuition. The more problems we solve, the more relationships we begin to recognize, and eventually those relationships become so familiar that we no longer have to consciously think about them."
+        "text": "Vikash's argument about pattern recognition starts to make more sense here. Maybe pattern recognition is actually one of the ways we develop intuition. The more problems we solve, the more relationships we begin to recognize, and eventually those relationships become so familiar that we no longer have to consciously think about them."
       },
       {
         "type": "paragraph",
@@ -110,7 +117,7 @@ export const blogEntries: BlogEntry[] = [
       },
       {
         "type": "paragraph",
-        "text": "My roommate is a mechanical engineering student, and I am a computer engineering student. Being good at math has certainly helped both of us throughout our respective courses. But on a broader scale, I think the more valuable skill is not necessarily being able to solve mathematical problems quickly. It is being able to reason through complicated problems, break them down, and understand the systems behind them."
+        "text": "Vikash is a mechanical engineering student, and I am a computer engineering student. Being good at math has certainly helped both of us throughout our respective courses. But on a broader scale, I think the more valuable skill is not necessarily being able to solve mathematical problems quickly. It is being able to reason through complicated problems, break them down, and understand the systems behind them."
       },
       {
         "type": "paragraph",
