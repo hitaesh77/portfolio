@@ -14,8 +14,22 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://hitaesh.com"),
   title: "Hitaesh Saravanarajan | Software Engineer",
   description: "Computer engineering student and software engineer building reliable fullstack, cloud, and systems software.",
+  openGraph: {
+    type: "website",
+    siteName: "Hitaesh Saravanarajan",
+    title: "Hitaesh Saravanarajan | Software Engineer",
+    description: "Computer engineering student and software engineer building reliable fullstack, cloud, and systems software.",
+    images: [{ url: "/share-image", width: 1200, height: 630, alt: "Hitaesh Saravanarajan — Software Engineer, Computer Engineering at Purdue University" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Hitaesh Saravanarajan | Software Engineer",
+    description: "Computer engineering student and software engineer building reliable fullstack, cloud, and systems software.",
+    images: [{ url: "/share-image", alt: "Hitaesh Saravanarajan — Software Engineer, Computer Engineering at Purdue University" }],
+  },
 };
 
 export default function RootLayout({
