@@ -7,6 +7,7 @@ type Project = {
   status: string;
   href: string;
   action: string;
+  codeHref?: string;
   note?: string;
 };
 
@@ -18,6 +19,16 @@ const featured: Project[] = [
     status: "Academic project",
     href: "https://gitshare.me/repo/074b76e0-3e86-401f-93ad-befa37215b2a",
     action: "View project",
+  },
+  {
+    title: "Lingo",
+    stack: "Codex · FastAPI · Next.js · AI Development",
+    description: "Built for my Vanguard mentor, Khanh Tran, as a stakeholder project for Purdue's ECE 570 AI class. Lingo helps him learn Arabic through immersion in text, books, movies, and other Arabic media. AI previews what he plans to read or watch and creates flashcards of key vocabulary to study beforehand, so he can spend less time pausing to look up words.",
+    status: "Academic project",
+    href: "https://language-media-prep-frontend.vercel.app/",
+    action: "Try the app",
+    codeHref: "https://github.com/hitaesh77/language-media-prep",
+    note: "My main goal was to learn how to develop with AI. I tried an AGENTS.md file, a progress log updated throughout development, and a record of design decisions. I used test-driven development: describing functionality and writing tests before implementation let me review the expected behavior and gave the AI a way to validate its work. I also went back and forth with the LLM to refine the frontend design.",
   },
   {
     title: "Findify",
@@ -65,9 +76,14 @@ function ProjectCard({ project, compact = false }: { project: Project; compact?:
     <p className="mb-3 mt-0 font-mono text-[10px] leading-relaxed text-[var(--text-secondary)]">{project.stack}</p>
     <p className="m-0 text-[12px] leading-[1.75] text-[var(--text-muted)]">{project.description}</p>
     {project.note && <p className="mb-0 mt-3 border-l-2 border-[var(--border-strong)] pl-3 text-[11px] leading-[1.7] text-[var(--text-muted)]">{project.note}</p>}
-    <a href={project.href} target="_blank" rel="noopener noreferrer" aria-label={`${project.action}: ${project.title}`} className="mt-4 inline-flex min-h-8 items-center gap-1.5 text-[11px] text-[var(--text-secondary)] no-underline transition-colors hover:text-[var(--text-primary)] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--text-primary)]">
+    <div className="mt-4 flex flex-wrap gap-x-5 gap-y-2">
+    <a href={project.href} target="_blank" rel="noopener noreferrer" aria-label={`${project.action}: ${project.title}`} className="inline-flex min-h-8 items-center gap-1.5 text-[11px] text-[var(--text-secondary)] no-underline transition-colors hover:text-[var(--text-primary)] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--text-primary)]">
       {project.action}<ArrowUpRight size={13} strokeWidth={1.5} aria-hidden="true" />
     </a>
+    {project.codeHref && <a href={project.codeHref} target="_blank" rel="noopener noreferrer" aria-label={`View code: ${project.title}`} className="inline-flex min-h-8 items-center gap-1.5 text-[11px] text-[var(--text-secondary)] no-underline transition-colors hover:text-[var(--text-primary)] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--text-primary)]">
+      View code<ArrowUpRight size={13} strokeWidth={1.5} aria-hidden="true" />
+    </a>}
+    </div>
   </article>;
 }
 

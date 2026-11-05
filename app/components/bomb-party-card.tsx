@@ -1,8 +1,8 @@
 import { ArrowUpRight } from "lucide-react";
 import styles from "./bomb-party-card.module.css";
 
-export default function BombPartyCard() {
-  return <a href="https://bomb-party-sooty.vercel.app/" target="_blank" rel="noopener noreferrer" className={styles.card} aria-label="Play Bomb Party, a game I made for my friends">
+export default function BombPartyCard({ compact = false }: { compact?: boolean }) {
+  return <a href="https://bomb-party-sooty.vercel.app/" target="_blank" rel="noopener noreferrer" className={`${styles.card} ${compact ? styles.compact : ""}`} aria-label="Play Bomb Party, a game I made for my friends">
     <div className={styles.copy}>
       <h2 className={styles.title}>BOMB <span>PARTY</span></h2>
       <p className={styles.story}>Built on a car ride to Nashville.</p>

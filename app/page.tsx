@@ -5,6 +5,7 @@ import Link from "next/link";
 import ThemeToggle from "./components/theme-toggle";
 import Projects from "./components/projects";
 import BombPartyCard from "./components/bomb-party-card";
+import LingoCard from "./components/lingo-card";
 import { ArrowUpRight } from "lucide-react";
 
 type TabName = "About" | "Experience" | "Projects" | "Tech" | "Resume" | "Contact";
@@ -164,7 +165,10 @@ export default function Page() {
           ))}
         </nav>
 
-        <BombPartyCard />
+        <div className="mb-9 grid grid-cols-2 gap-3 max-[360px]:grid-cols-1">
+          <BombPartyCard compact />
+          <LingoCard compact />
+        </div>
 
         <nav className="mount mount-d3 mb-10 border-b border-[var(--border)]">
           <div className="flex gap-6 overflow-x-auto overflow-y-hidden [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
