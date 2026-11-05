@@ -49,6 +49,12 @@
 .articleBody { font-size: 16px; line-height: 1.85; overflow-wrap: anywhere; }
 .articleBody p { margin: 0 0 22px; }
 .articleBody h2 { color: var(--text-primary); font-size: 22px; font-weight: 500; letter-spacing: -.025em; line-height: 1.4; margin: 38px 0 18px; }
-.articleBody a { color: var(--text-primary); text-decoration: underline; text-underline-offset: 3px; text-decoration-color: var(--border-strong); }
-.articleBody a:hover { text-decoration-color: currentColor; }
+.articleBody a { color: var(--text-primary); text-decoration: underline; text-underline-offset: 4px; text-decoration-thickness: 1px; text-decoration-color: var(--text-muted); transition: text-decoration-color 150ms, background-color 150ms; border-radius: 2px; }
+.articleBody a:hover { text-decoration-color: currentColor; background-color: var(--surface-hover); }
 .articleBody .contentList { margin: 0 0 22px; padding-left: 24px; }
+.articleFigure { margin: 36px -80px; }
+.articleBody .diagramLink { display: block; overflow: hidden; border: 1px solid var(--border-strong); border-radius: 12px; background: #111; text-decoration: none; }
+.diagramLink img { display: block; width: 100%; height: auto; }
+.diagramHint { display: block; padding: 13px 18px; border-top: 1px solid #333; color: #ccc; font: 11px/1.6 monospace; text-align: right; }
+.articleFigure figcaption { margin: 12px auto 0; max-width: 560px; color: var(--text-muted); font: 11px/1.7 monospace; text-align: center; }
+@media (max-width: 900px) { .articleFigure { margin-inline: 0; } }

@@ -2,7 +2,8 @@ export type BlogText = string | (string | { text: string; href: string })[];
 export type BlogBlock =
   | { type: "paragraph"; text: BlogText }
   | { type: "heading"; text: string }
-  | { type: "orderedList"; items: BlogText[] };
+  | { type: "orderedList"; items: BlogText[] }
+  | { type: "image"; src: string; alt: string; caption: string; width: number; height: number };
 
 export type BlogEntry = {
   id: string;
@@ -17,6 +18,198 @@ export const blogAuthor = "hitaesh77";
 export const sampleContent = false;
 
 export const blogEntries: BlogEntry[] = [
+{
+  "id": "f3a8c62",
+  "date": "2026-11-05",
+  "title": "my engineering dilemma",
+  "slug": "my-engineering-dilemma",
+  "excerpt": "Finding my footing as an engineer in the age of AI, from robotics and RISC-V to the intuition behind system design.",
+  "content": [
+    {
+      "type": "paragraph",
+      "text": "One of the hottest topics in this space right now is what the software engineering landscape will look like as AI becomes more widely adopted. I want to discuss how I have been navigating this space, my own personal dilemma when it comes to learning and programming, and overall what I think it means to be a good engineer. I have a lot of thoughts on this, and they are somewhat jumbled in my head, so this is my attempt at formalizing what I am thinking."
+    },
+    {
+      "type": "paragraph",
+      "text": "To start, I want to be a good engineer. I have had a deep passion for engineering for as long as I can remember, and began getting involved in software specifically in middle school. However, I have noticed this phenomenon in myself where I feel as though I am overly dependent on AI, and I feel like I am not exercising the part of my brain that made me passionate about programming in the first place."
+    },
+    {
+      "type": "heading",
+      "text": "what i love about engineering"
+    },
+    {
+      "type": "paragraph",
+      "text": "I think the thing about engineering and programming I fell in love with is the problem solving aspect of it. When I think back to when I had the most fun coding, I think back to my high school robotics team, where I spent hours on end learning new algorithms, math, techniques, sensors, and more to try and get my robot to move as fast and accurately as possible."
+    },
+    {
+      "type": "paragraph",
+      "text": "I have a core internal log of all my major achievements in robotics:"
+    },
+    {
+      "type": "orderedList",
+      "items": [
+        "When I first started using functions to organize my code better",
+        "When I first started tracking robot movement based on integrated motor encoders instead of just letting the motors run for x amount of time",
+        "When I first started using sensors like gyroscopes and laser distance sensors to get real world feedback about the robot's position",
+        "When I first started using PIDs to have smoother velocity curves for the robot",
+        "When I first started using absolute position instead of relative position, which made the accuracy of our robot's turns and straight line movement 10x better"
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": [
+        "Every one of these improvements came with hours of research, implementation, testing, and debugging, and the dopamine hit at the end of this process was always worth it. I became a much better programmer and problem solver through this tedious process. Much of my high school code can be found here: ",
+        {
+          "text": "my high school robotics code",
+          "href": "https://github.com/hitaesh77/91f-VEX-Worlds-2021-2022"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": [
+        "Another example of when I loved engineering was last semester, when I took my computer architecture class and designed a dual-core RISC-V processor from scratch in SystemVerilog. As Claude was not as good at Verilog at the time, and it could not understand what I wanted or the flow of data between internal components of the processor very well, I spent a long time figuring it out myself with my partner ",
+        {
+          "text": "Sai Vura",
+          "href": "https://www.linkedin.com/in/sai-vura/"
+        },
+        ". We spent hours in the lab designing, implementing, and testing the CPU until it performed how we wanted. Dealing with hazards, branching, atomicity, cache coherence, locks, and more really challenged my brain, and much like high school, the dopamine hit at the end of solving each of these problems was so worth the \"pain\" we went through. The code for the CPU and the RTL diagram can be found here: ",
+        {
+          "text": "the CPU code and RTL diagram",
+          "href": "https://gitshare.me/repo/074b76e0-3e86-401f-93ad-befa37215b2a"
+        },
+        "."
+      ]
+    },
+    {
+      "type": "image",
+      "src": "/images/risc-v-pipeline.png",
+      "alt": "RISC-V RTL diagram showing the processor pipeline, hazard and forwarding units, instruction and data caches, memory controller, and RAM.",
+      "caption": "the RISC-V pipeline, caches, and memory controller Sai and I designed",
+      "width": 2968,
+      "height": 2672
+    },
+    {
+      "type": "heading",
+      "text": "the core dilemma"
+    },
+    {
+      "type": "paragraph",
+      "text": "The dilemma I am facing right now is feeling more like an LLM prompter than a real engineer. What I liked about these past projects was the problem solving aspect of it, and feeling like I accomplished some major feat through trial and error. Nowadays, it is so easy to one shot a proper solution with an agent like Codex. For example, my LeetCode-to-portfolio syncing process seems like such an ingenious idea to me, but it was ChatGPT that offered separate solutions for me to choose from. I did not design the system myself. That bothers me a lot."
+    },
+    {
+      "type": "paragraph",
+      "text": [
+        "That really started to make me question: Am I even a good engineer, and what does it mean to be a good engineer? Similar to my ",
+        {
+          "text": "previous post about math",
+          "href": "/blog/what-does-it-mean-to-be-good-at-math"
+        },
+        ", I think a lot of good engineers gain a sort of engineering intuition that comes from years of experience and problem solving. But if all my solutions are coming from an LLM, isn't the LLM the true engineer? Aren't I just the vessel that phones a friend? Will I ever get that intuition to know what is good and what is bad in the world of software?"
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": "I have done a lot of reflection on this, and I think being a good engineer boils down to gaining intuition in these four categories:"
+    },
+    {
+      "type": "orderedList",
+      "items": [
+        "System design",
+        "Logic design",
+        "Code/syntax design",
+        "Debugging skills"
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": "I feel like these are different abstractions of software, and I want to discuss them in detail, starting from the bottom up."
+    },
+    {
+      "type": "heading",
+      "text": "code/syntax design"
+    },
+    {
+      "type": "paragraph",
+      "text": [
+        "This one bothers me the most. I recently read Mitchell Hashimoto's (former CEO of HashiCorp) blog on his AI adoption journey: ",
+        {
+          "text": "my AI adoption journey",
+          "href": "https://mitchellh.com/writing/my-ai-adoption-journey"
+        },
+        ". He discusses how when he first started using AI, his coding ability was so good that he was evaluating and correcting the AI and his prompts until it started coding like him. As a relative beginner in the space, I find this wild since I know that coding agents have 100x better coding skills than me."
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": "At this point, I know that I cannot code as well as AI can. It has the knowledge of the entire internet at its fingertips, while I have to constantly look up how to raise exceptions in Python. The gap is significant, and at this point, I feel like my productivity would simply be stunted if I did not use agents to write code, whether it be in school or the workplace. And that is truly terrifying since it means I will never be as good a programmer as the greats of the past who built the internet we are using today. I will never be as good at coding as someone like Mitchell Hashimoto."
+    },
+    {
+      "type": "paragraph",
+      "text": "As I sit with this fact, I realize that if I can't be a good engineer at this level, that means I need to be a great engineer at other abstractions of the process."
+    },
+    {
+      "type": "heading",
+      "text": "logic design"
+    },
+    {
+      "type": "paragraph",
+      "text": "At this level, I think this is what LeetCode tests us on. It tests our ability to look at a fresh problem, understand the DSA behind an optimal solution, and design logic that will allow us to solve the problem efficiently and accurately. I do think this is more of a gray area, somewhere between the levels of syntax design and system design, but I find it equally as important."
+    },
+    {
+      "type": "paragraph",
+      "text": "When we write code, the logic of the code is what the developer should have in mind before touching a single key. When we outsource the coding to an agent, we start to lose control of the logic a little bit. Logic design definitely goes hand in hand with code/syntax, but I feel like we have more control over it."
+    },
+    {
+      "type": "paragraph",
+      "text": "For example, let's say we want to implement a caching mechanism for an API to reduce unnecessary database calls. We could just prompt an LLM to implement caching, and it would probably come up with a reasonable solution and write all the code for us. But an engineer with intuition and experience might think about the problem a little differently. They might first ask what data actually needs to be cached, when that cache should expire, how to handle stale data, and what should happen when the cache misses. They could then design the logic around these decisions, perhaps using a cache-aside pattern with a TTL, and have the agent implement that specific solution."
+    },
+    {
+      "type": "paragraph",
+      "text": "In both cases, the end result might be functionally identical, but I think there is a significant difference in how we got there. In the latter case, the design of the logic is more clearly present in the engineer's thinking process. The engineer is the one making decisions, while the agent is simply translating those decisions into code."
+    },
+    {
+      "type": "paragraph",
+      "text": "If I can't be the best coder around, I want to at least start getting better at designing the logic that the code should execute, and very explicitly prompting an agent to implement my thoughts. That way, the thinking is done by me, not the agent."
+    },
+    {
+      "type": "paragraph",
+      "text": "This abstraction is definitely a bit more convoluted and difficult to understand, but I am just putting my thoughts on paper. That leads me to the next abstraction."
+    },
+    {
+      "type": "heading",
+      "text": "system design"
+    },
+    {
+      "type": "paragraph",
+      "text": "This is my favorite abstraction of software engineering, and the one I want to become the best at. When I think back to the projects I mentioned earlier, part of the fun was definitely writing the code and debugging it, but most of it was researching new techniques and designing an optimal system. With the robot, slowly designing a closed loop system of sensor input, PID, motion algorithms, states, etc. was the most rewarding and enjoyable part of the challenge. With the RISC-V processor, designing the RTL diagram and how each component of the processor interacted with the others was the most enjoyable part of it."
+    },
+    {
+      "type": "paragraph",
+      "text": "Right now, I very much feel myself using AI to design systems. What database should be used? Do we need caching? How does security play into this? Where do we store documents? Can this be done serverless, or do we need a continuously running server? However, I also feel myself diving deeper into each design decision and asking more questions, because I genuinely enjoy learning about this and want to know more. This is where I feel the most like an engineer, and this is where I want to improve the most. If I can't be the best coder or the best logic designer, I want to be the best architect who builds elegant systems."
+    },
+    {
+      "type": "heading",
+      "text": "what now"
+    },
+    {
+      "type": "paragraph",
+      "text": "I have unfortunately made peace with the fact that I may never reach the level of coding skills that I want to have. In this age, the only way to get to that level is to do my own personal projects and force myself to not use AI, which I have been doing from time to time, but that sort of part-time experience is definitely not enough to get to where I want to be."
+    },
+    {
+      "type": "paragraph",
+      "text": "That being said, I think I found a new passion and a way to prove to myself that I am a good engineer, and that is system design. These days, I find myself asking how a lot of the apps I use are designed and architected on the backend, and I have spent a lot of time trying to learn from these. Whether it be how Jira works or how Splunk is able to search through hundreds of thousands of records in a few seconds, I find myself really interested in these kinds of topics, and I want to learn."
+    },
+    {
+      "type": "paragraph",
+      "text": "Moving forward, I think I will be trying to understand how a lot of the apps we use today work in the background, and that will be my avenue for exploring and gaining intuition. Seeing how different teams have designed solutions, conversing with AI to test my knowledge and dive deeper into details that may not be officially published, and just reading about system design fundamentals will hopefully get me to the point I want to be."
+    },
+    {
+      "type": "paragraph",
+      "text": "I hope to write often about my learnings, and I think I have somewhat of a path forward to becoming a better engineer."
+    }
+  ]
+},
   {
     "id": "a4d9f20",
     "date": "2026-10-28",
