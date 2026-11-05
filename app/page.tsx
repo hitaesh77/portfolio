@@ -197,7 +197,7 @@ export default function Page() {
               </p>
 
               <p className="m-0">
-                I&apos;m currently working part time at <span className="text-[var(--text-primary)]">Vanguard</span>, where I&apos;ve been building with AWS and finding ways to bring AI into developer workflows. Recently, I built a <span className="text-[var(--text-primary)]">Claude skill</span> that replaced a test data generation app, so developers can generate the data they need right in their workflow.
+                I&apos;m currently working part time at <span className="text-[var(--text-primary)]">Vanguard</span>, where I architected a <span className="text-[var(--text-primary)]">serverless AWS system</span> powering a full-stack app for synthetic data generation. I later migrated that functionality into a <span className="text-[var(--text-primary)]">Claude skill</span> that handles AWS credentials and invokes AWS functions, bringing synthetic data generation directly into developers&apos; everyday workflows.
               </p>
 
               <p className="m-0">
@@ -225,8 +225,9 @@ export default function Page() {
                         date: "Aug 2026 to Present",
                         company: "Vanguard",
                         bullets: [
-                          "Working part time at Vanguard while studying at Purdue",
-                          "Built a Claude skill that replaced a test data generation app and brings data generation into developer workflows",
+                          "Working part time while studying at Purdue",
+                          "Reworked a test data platform to generate reusable scripts and 100K+ FINRA records in under 10 seconds",
+                          "Built GitHub Actions workflows for Lambda testing and a Claude Code skill for everyday test data generation",
                         ],
                       },
                       {

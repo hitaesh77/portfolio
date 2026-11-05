@@ -14,7 +14,7 @@ export default function LingoCard({ compact = false }: { compact?: boolean }) {
     </span>
     <div className={styles.copy}>
       <h2 className={styles.title}>Lingo</h2>
-      <p className={styles.story}>Learn key words. Immerse yourself in Arabic.</p>
+      <p className={styles.story}>Arabic flashcards for your next read or watch.</p>
     </div>
     <span className={styles.action}><span>Try Lingo</span><ArrowUpRight size={15} strokeWidth={2} aria-hidden="true" /></span>
   </a>;
