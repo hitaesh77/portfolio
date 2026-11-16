@@ -19,6 +19,78 @@ export const sampleContent = false;
 
 export const blogEntries: BlogEntry[] = [
 {
+  "id": "c8e2b71",
+  "date": "2026-11-16",
+  "title": "thoughts on the social network",
+  "slug": "thoughts-on-the-social-network",
+  "excerpt": "Thoughts on The Social Network, how it portrays Mark Zuckerberg and Eduardo Saverin, and growth before monetization.",
+  "content": [
+    {
+      "type": "paragraph",
+      "text": "The Social Network is one of my favorite movies of all time. From a young age, I have been fascinated by tech, programming, and most of all, entrepreneurship. The Social Network brings all those aspects together in a medium that keeps your attention and is very entertaining to watch. I rewatched the movie today and wanted to talk about some of its stylistic elements and a few ideas I had about it."
+    },
+    {
+      "type": "paragraph",
+      "text": "The movie spends a long time characterizing Mark Zuckerberg (played by Jesse Eisenberg) as an “asshole”. He is seen as friendless, difficult to talk to, arrogant, and very interestingly, a bad friend to Eduardo Saverin (played by Andrew Garfield). I want to talk about how the creators of the movie characterized him this way, why I think they did a great job doing so, and how this reflects his real-life character."
+    },
+    {
+      "type": "heading",
+      "text": "how mark is portrayed"
+    },
+    {
+      "type": "paragraph",
+      "text": "To begin, Mark Zuckerberg is first seen as a horrible boyfriend who is openly arrogant and condescending to his girlfriend Erica at the beginning of the movie. She is seen being actively invested and interested in the things Mark has to say, while he spends the entire time talking down to her because she went to BU and did not know about final clubs. It is important to note that in real life, Mark was already dating his future wife, Priscilla Chan, around the time Facebook was created. Erica Albright, as portrayed in the film, was fictional, so this scene seems to have been included primarily for characterization and dramatization purposes."
+    },
+    {
+      "type": "paragraph",
+      "text": "Another major point of the movie was emphasizing how unpleasant Mark was to be around. He is seen to be isolated due to his creation of Facemash (the site he made to rank girls' pictures), and is seen to only have a few friends like Dustin Moskovitz and Eduardo Saverin. We know that in real life, Mark was part of the Alpha Epsilon Pi fraternity, and he had a long-term girlfriend whom he eventually married. This suggests that his social life was more normal than the movie portrayed."
+    },
+    {
+      "type": "paragraph",
+      "text": "This makes me question why the writers wanted to characterize Mark in this light. I have not done much research on this, but a quick Google search told me that Facebook was already facing controversy over data privacy around 2009/2010. This was around the time The Social Network was filmed and released, so maybe the writers chose to portray Mark in a more negative light due to public opinion at the time."
+    },
+    {
+      "type": "paragraph",
+      "text": "One thing I question about the movie is how close Mark and Eduardo actually were. From what I found online, Eduardo was a business partner who was eventually pushed out through share dilution, but it is less clear whether they were as close as the movie portrayed them. I believe the two were characterized this way to make Mark's betrayal feel more personal and portray him in a more negative light."
+    },
+    {
+      "type": "heading",
+      "text": "mark and eduardo"
+    },
+    {
+      "type": "paragraph",
+      "text": [
+        "Another very interesting way the writers characterized Mark Zuckerberg was pointed out by ",
+        {
+          "text": "Arya Shukla",
+          "href": "https://www.linkedin.com/in/arya-m-shukla/"
+        },
+        ", who I watched the movie with at the time of writing. In the scene right after Mark and Eduardo were hit on by two girls at the Bill Gates speech, the two are seen entering Mark’s dorm room. Eduardo grabs two beers, one for Mark and one for himself. When he goes to hand one to Mark, Mark is seen grabbing another beer for himself. This reflects how Eduardo thinks about both of them as a team, while Mark seems to only care about himself. For the remainder of their conversation in that scene, I noticed that Mark uses “I” when talking about Facebook, while Eduardo uses “we”, another subtle way the writers characterize Mark negatively."
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": "Eduardo was characterized as having very positive qualities. He is seen as a caring friend toward Mark, someone who cares deeply about Facebook, and someone who says “Mark doesn’t care about money and he needs to be protected”. In fact, when Eduardo goes to Palo Alto to visit Mark at the new Facebook house, he says he quit his internship to ride subways 14 hours a day to get advertisers for Facebook. In real life, Eduardo reportedly did not quit his internship at Lehman Brothers, and he chose to stay in New York while the rest of the core team moved to Palo Alto. This suggests that his commitment to the company may not have been as strong as the movie portrayed, something the writers chose to leave out."
+    },
+    {
+      "type": "paragraph",
+      "text": "I also want to point out some details about privacy. Facebook has faced a lot of criticism over data privacy issues. As I mentioned earlier, I have a feeling that this may have influenced why Mark was shown in such a negative light when the movie came out in 2010. However, Eduardo, who was characterized as such a positive force in the movie, was also involved in pitching targeted advertising based on users' personal information. This is interesting because the movie presents Eduardo as the more responsible and sympathetic character, even though he was also interested in monetizing users' data."
+    },
+    {
+      "type": "heading",
+      "text": "growth before monetization"
+    },
+    {
+      "type": "paragraph",
+      "text": "I want to take some time to talk about the tension between Sean Parker and Eduardo Saverin. From some quick research, I learned that Sean Parker was reportedly involved in a drug-related incident, which is also dramatized in the movie. This helped reinforce his negative characterization. That being said, a big part of the movie was the difference between Eduardo’s business-minded perspective of wanting to monetize Facebook ASAP, while Zuckerberg and Parker wanted to keep it cool and see how far it could grow. In this specific instance of differing opinions, I agree with Sean Parker’s perspective of focusing on growth before monetization."
+    },
+    {
+      "type": "paragraph",
+      "text": "Those were some of my thoughts on the movie, its characterization of people, and some of the events it portrays. I have a lot more thoughts, but these are the ones that were the most fleshed out in my head at the time of writing. I love this movie, and I think it will always be fascinating to see how a company starts and grows. I hope to start my own one day, and I love watching content like this, even if it is not 100% accurate."
+    }
+  ]
+},
+{
   "id": "f3a8c62",
   "date": "2026-11-05",
   "title": "my engineering dilemma",
