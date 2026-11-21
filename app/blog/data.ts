@@ -27,21 +27,39 @@ export const blogEntries: BlogEntry[] = [
   "content": [
     {
       "type": "paragraph",
-      "text": ["I built Lingo for ECE 570, where I was tasked with creating an AI-native app for a specific stakeholder. I reached out to my mentor from Vanguard, ", {"text": "Khanh Tran", "href": "https://www.linkedin.com/in/khanh-tran-544a34208/"}, ", who was learning Arabic and wanted a way to learn vocabulary before reading books or watching movies. With Lingo, he could make flashcards for important words ahead of time and spend less time pausing to look them up."]
+      "text": "I want to write a longer blog post today about how I architected and developed my most recent project, Lingo. I also want to talk about what I learned while working around the constraints of serverless compute, and how Vercel’s architecture allowed my backend to work. I spent some time reading about what Vercel is doing under the hood, and I found it super interesting, so I wanted to share that too."
+    },
+    {
+      "type": "heading",
+      "text": "context on the app and its architecture"
     },
     {
       "type": "paragraph",
-      "text": [
-        "Vercel has been my go-to for frontend hosting since I started building web apps. This portfolio and blog are hosted there too. I wanted to use it for both Lingo’s Next.js frontend and FastAPI backend, but I’d never hosted a backend there before. The first constraint I ran into was the default 4.5 MB request body limit for Vercel Functions. I capped each PDF upload at 4 MiB (about 4.19 MB) to leave room for the rest of the request, which meant I needed a way to handle books that were much larger than that. ",
-        {
-          "text": "Vercel Functions limits",
-          "href": "https://vercel.com/docs/functions/limitations"
-        }
+      "text": ["I built Lingo for ECE 570, where I was tasked with creating an AI-native app for a specific stakeholder. I reached out to my mentor from Vanguard, ", {"text": "Khanh Tran", "href": "https://www.linkedin.com/in/khanh-tran-544a34208/"}, ", who was learning Arabic and wanted a way to learn vocabulary before reading books or watching movies. The idea was that he could make flashcards for important words before immersing himself in the media, so he could spend more time actually reading or watching and less time pausing to look things up."]
+    },
+    {
+      "type": "paragraph",
+      "text": "Vercel has been my go-to for frontend hosting since I started building web apps. This portfolio and blog are hosted there too. I love how easy it is to get an app up and running, so I wanted to use Vercel for both Lingo’s Next.js frontend and FastAPI backend. I had never hosted a backend there before, though, so this was a new learning curve for me."
+    },
+    {
+      "type": "paragraph",
+      "text": "Unlike a traditional long-running server, a serverless backend runs on instances managed by the cloud provider. An instance may be reused, but a later request is not guaranteed to reach the same one. For Lingo, that meant:"
+    },
+    {
+      "type": "orderedList",
+      "items": [
+        "I could not rely on keeping the app’s state in the backend’s memory between requests. Persistent data would need to live somewhere else.",
+        ["Vercel Functions had a 4.5 MB request body limit, which was a problem for sending large PDFs to the backend. ", {"text": "Vercel Functions limits", "href": "https://vercel.com/docs/functions/limitations"}],
+        "I capped each PDF upload at 4 MiB (about 4.19 MB) to leave room for the rest of the request, so I needed a way to handle books much larger than that."
       ]
     },
     {
       "type": "heading",
       "text": "personal background"
+    },
+    {
+      "type": "paragraph",
+      "text": "Before diving into Lingo, I want to share a little background on my experience designing serverless apps. You can skip this section if you are bored lol. My work at Vanguard helped me think through this project. I am not sure whether I can share the architecture of the app I built there, but I can talk about another design I made for possible future implementation, if my team actually wants it lol."
     },
     {
       "type": "paragraph",
@@ -69,11 +87,11 @@ export const blogEntries: BlogEntry[] = [
     },
     {
       "type": "paragraph",
-      "text": "In a traditional server setup, your app can run as a long-lived process that waits for HTTP requests. With serverless, you deploy your code and the cloud provider manages the instances that run it. In-memory state can survive when an instance is reused, but Lingo can’t count on the next request reaching that same instance."
+      "text": "To start, I do not think serverless was necessarily the ideal fit for this app. Large book PDFs and movie subtitles can involve a lot of data and processing time, which were exactly the constraints I had to work around. A long-running process could hold state while it worked, although I would still need a way to get a large file to it in the first place. I have not worked extensively with that problem, but one approach I would explore is uploading the file to a document store like S3 and having the backend retrieve it."
     },
     {
       "type": "paragraph",
-      "text": "For a class project, I wanted to stay on Vercel’s free tier and keep the setup to a frontend and backend. The first problem was getting large PDFs and subtitle files to FastAPI."
+      "text": "That being said, Lingo was a class project, and I really wanted to stay on Vercel’s free tier. I also wanted a straightforward frontend and backend without adding a database or external storage. Those choices kept hosting simple, but they meant I had to get creative about getting large PDFs and subtitle files to FastAPI."
     },
     {
       "type": "heading",
@@ -93,7 +111,7 @@ export const blogEntries: BlogEntry[] = [
     },
     {
       "type": "paragraph",
-      "text": "In this design, the browser acts as the orchestrator. It keeps track of which pages have been processed and sends the next ones. One drawback is that refreshing or leaving the page interrupts extraction. A large PDF can also take several minutes to process, even with two page requests going at a time. I thought this kept the architecture simple enough for the project."
+      "text": "In this design, the browser acts as the orchestrator. It keeps track of which pages have been processed and sends the next ones. One drawback is that refreshing or leaving the page interrupts extraction. A large PDF can also take several minutes to process, even with two page requests going at a time. I thought this was a reasonable tradeoff for the project: the browser could coordinate the work without another service, but the user had to keep the page open and wait for it to finish."
     },
     {
       "type": "heading",
@@ -109,7 +127,7 @@ export const blogEntries: BlogEntry[] = [
     },
     {
       "type": "paragraph",
-      "text": "The next challenge was generating hundreds of flashcards from the passages the user selected. I sent the passages in batches to keep the request size manageable. The frontend kept track of how it grouped the passages so it could match each flashcard back to the passage it came from."
+      "text": "Once I had a way to extract text, the next challenge was generating hundreds of flashcards from the passages the user selected. Sending all those passages at once could run into the same request-size problem as the PDFs, so I sent them in batches. The frontend kept track of how it grouped the passages so it could match each flashcard back to the passage it came from. That mattered because I wanted the user to be able to connect a word back to the context they would see in their book or movie."
     },
     {
       "type": "paragraph",
@@ -117,8 +135,7 @@ export const blogEntries: BlogEntry[] = [
     },
     {
       "type": "heading",
-      "text": "reflection and vercel’s fluid compute",
-      "bold": true
+      "text": "reflection and vercel’s fluid compute"
     },
     {
       "type": "paragraph",
@@ -140,7 +157,15 @@ export const blogEntries: BlogEntry[] = [
     },
     {
       "type": "paragraph",
-      "text": ["The part I found most interesting was that there are two different kinds of concurrency here. In Lingo, the browser sends one batch to FastAPI, and FastAPI makes several OpenAI calls concurrently within that one incoming request. With Fluid compute, Vercel can let multiple incoming FastAPI requests overlap on the same function instance. While one request is waiting on an external API, the instance can make progress on another request. Reusing instances this way can reduce cold starts. ", {"text": "Vercel’s Fluid compute docs", "href": "https://vercel.com/docs/fluid-compute"}]
+      "text": "This made me think back to what happens when Lingo generates flashcards. The browser sends a batch to my FastAPI backend, and the backend spends part of that request waiting for responses from OpenAI. I was curious what the serverless instance could do during that waiting time, especially if another request came in."
+    },
+    {
+      "type": "paragraph",
+      "text": ["That is where Fluid compute gets interesting to me. Vercel can run multiple incoming requests on the same function instance at the same time, instead of needing a separate instance for each request. So while one request is waiting on an external API, the instance can make progress on another. Vercel can use existing capacity before starting more instances, which can reduce cold starts and make better use of resources. ", {"text": "Vercel’s Fluid compute docs", "href": "https://vercel.com/docs/fluid-compute"}]
+    },
+    {
+      "type": "paragraph",
+      "text": "There are two different kinds of concurrency here, and it took me a moment to separate them. Inside one Lingo batch request, FastAPI makes several OpenAI calls concurrently. Fluid compute operates at a different level: it can let multiple incoming requests share an instance. Since Lingo sends its flashcard batches one at a time, that second kind would matter when separate requests overlap, such as requests from different users; it does not make one batch’s OpenAI calls concurrent by itself."
     },
     {
       "type": "image",
@@ -156,7 +181,7 @@ export const blogEntries: BlogEntry[] = [
     },
     {
       "type": "paragraph",
-      "text": "For Khanh’s use case, sending flashcard batches one at a time and keeping the page open were acceptable tradeoffs. Lingo does what I built it to do, and PDF parsing is still the biggest rough edge. If I turned it into a consumer app, I’d look at uploading large PDFs directly to something like S3 and processing them in the background. That way, users could leave the page and come back to their results. I’d also measure how long large files take to process and what they cost before deciding how much of the architecture to change."
+      "text": "Looking back, this was probably not the most efficient architecture I could have chosen for processing large files. My priority was keeping hosting simple and inexpensive while still building something useful for Khanh, so I was willing to work around those constraints. For his use case, sending flashcard batches one at a time and keeping the page open were acceptable tradeoffs. Lingo does what I built it to do, and PDF parsing is still the biggest rough edge. If I turned it into a consumer app, I’d look at uploading large PDFs directly to something like S3 and processing them in the background. That way, users could leave the page and come back to their results. I’d also measure how long large files take to process and what they cost before deciding how much of the architecture to change."
     },
     {
       "type": "paragraph",
