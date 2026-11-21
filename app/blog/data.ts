@@ -1,7 +1,7 @@
 export type BlogText = string | (string | { text: string; href: string })[];
 export type BlogBlock =
   | { type: "paragraph"; text: BlogText }
-  | { type: "heading"; text: string }
+  | { type: "heading"; text: string; bold?: boolean }
   | { type: "orderedList"; items: BlogText[] }
   | { type: "image"; src: string; alt: string; caption: string; width: number; height: number };
 
@@ -18,6 +18,152 @@ export const blogAuthor = "hitaesh77";
 export const sampleContent = false;
 
 export const blogEntries: BlogEntry[] = [
+{
+  "id": "d9f4a21",
+  "date": "2026-11-21",
+  "title": "a deep dive into lingo’s architecture and vercel fluid compute",
+  "slug": "a-deep-dive-into-lingo-architecture-and-vercel-fluid-compute",
+  "excerpt": "How I designed Lingo's serverless architecture, handled large PDFs, and learned about Vercel Fluid compute.",
+  "content": [
+    {
+      "type": "paragraph",
+      "text": ["I built Lingo for ECE 570, where I was tasked with creating an AI-native app for a specific stakeholder. I reached out to my mentor from Vanguard, ", {"text": "Khanh Tran", "href": "https://www.linkedin.com/in/khanh-tran-544a34208/"}, ", who was learning Arabic and wanted a way to learn vocabulary before reading books or watching movies. With Lingo, he could make flashcards for important words ahead of time and spend less time pausing to look them up."]
+    },
+    {
+      "type": "paragraph",
+      "text": [
+        "Vercel has been my go-to for frontend hosting since I started building web apps. This portfolio and blog are hosted there too. I wanted to use it for both Lingo’s Next.js frontend and FastAPI backend, but I’d never hosted a backend there before. The first constraint I ran into was the default 4.5 MB request body limit for Vercel Functions. I capped each PDF upload at 4 MiB (about 4.19 MB) to leave room for the rest of the request, which meant I needed a way to handle books that were much larger than that. ",
+        {
+          "text": "Vercel Functions limits",
+          "href": "https://vercel.com/docs/functions/limitations"
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "text": "personal background"
+    },
+    {
+      "type": "paragraph",
+      "text": "Over the summer at Vanguard, I built a serverless app to generate data for testing my team’s apps. I also designed a BAU automation bot that takes a CSV of compliance violations and creates draft Jira tickets for my team to review. This was one of my favorite architectures to design because the upload, processing, and progress checks could each run independently."
+    },
+    {
+      "type": "image",
+      "src": "/images/bau-automation.png",
+      "alt": "Architecture diagram of the BAU automation bot, showing the frontend, upload and status Lambdas, S3, DynamoDB, and worker Lambda.",
+      "caption": "BAU automation bot architecture",
+      "width": 1322,
+      "height": 402
+    },
+    {
+      "type": "paragraph",
+      "text": "An upload Lambda saves the CSV to S3 and records the batch in DynamoDB. The S3 upload triggers a worker Lambda, which checks for duplicates, generates ticket details, and puts draft tickets in Jira for review. A separate status Lambda reads from DynamoDB so the frontend can show progress while the worker runs."
+    },
+    {
+      "type": "paragraph",
+      "text": "That design gave me a concrete example of how to split up work in a serverless app and keep track of it between requests. When I started Lingo, I was working with a much smaller use case and wanted to see how much of that coordination I could handle in the browser."
+    },
+    {
+      "type": "heading",
+      "text": "designing lingo"
+    },
+    {
+      "type": "paragraph",
+      "text": "In a traditional server setup, your app can run as a long-lived process that waits for HTTP requests. With serverless, you deploy your code and the cloud provider manages the instances that run it. In-memory state can survive when an instance is reused, but Lingo can’t count on the next request reaching that same instance."
+    },
+    {
+      "type": "paragraph",
+      "text": "For a class project, I wanted to stay on Vercel’s free tier and keep the setup to a frontend and backend. The first problem was getting large PDFs and subtitle files to FastAPI."
+    },
+    {
+      "type": "heading",
+      "text": "extracting text from pdfs"
+    },
+    {
+      "type": "image",
+      "src": "/images/lingo-pdf-chunking.png",
+      "alt": "Diagram of PDF extraction, from splitting pages in the browser to extracting passages in FastAPI.",
+      "caption": "Lingo’s PDF extraction flow",
+      "width": 1372,
+      "height": 297
+    },
+    {
+      "type": "paragraph",
+      "text": "I split the PDF in the browser by copying each page into its own smaller PDF. Each request sent one page, and the browser could have up to two page requests in flight at once. If a page was too large, the browser recorded it as a failure. FastAPI validated each request, extracted the text, and split it into passages before sending it back. The user could then choose which passages to practice with, and Lingo saved them in the browser’s localStorage. Since I was storing plain text, that was enough for my small, single-user app. Movie subtitles followed a similar flow."
+    },
+    {
+      "type": "paragraph",
+      "text": "In this design, the browser acts as the orchestrator. It keeps track of which pages have been processed and sends the next ones. One drawback is that refreshing or leaving the page interrupts extraction. A large PDF can also take several minutes to process, even with two page requests going at a time. I thought this kept the architecture simple enough for the project."
+    },
+    {
+      "type": "heading",
+      "text": "generating flashcards"
+    },
+    {
+      "type": "image",
+      "src": "/images/lingo-flashcard-generation.png",
+      "alt": "Diagram of flashcard generation, from browser batches to concurrent passage calls and back.",
+      "caption": "Lingo’s flashcard generation flow",
+      "width": 1450,
+      "height": 242
+    },
+    {
+      "type": "paragraph",
+      "text": "The next challenge was generating hundreds of flashcards from the passages the user selected. I sent the passages in batches to keep the request size manageable. The frontend kept track of how it grouped the passages so it could match each flashcard back to the passage it came from."
+    },
+    {
+      "type": "paragraph",
+      "text": "Each batch contained several passages, and we generated about three to five cards per passage on average. FastAPI sent concurrent requests to OpenAI for the passages in that batch, validated and combined the flashcards, and returned them to the frontend. The browser waited for that response before sending the next batch. Once all the batches were done, Lingo saved the cards to localStorage so the user could practice with them."
+    },
+    {
+      "type": "heading",
+      "text": "reflection and vercel’s fluid compute",
+      "bold": true
+    },
+    {
+      "type": "paragraph",
+      "text": [
+        "I got curious about what Vercel was doing underneath my FastAPI app and started reading about Fluid compute. Vercel traces it back to React Server Components. The Next.js team wanted to stream parts of the UI to the browser as they became available. Vercel Functions ran on AWS Lambda, which didn’t support streaming responses at the time, so Vercel built a TCP connection between its Function Router and the Lambda instance to send back pieces of the response. That work became the foundation for Fluid compute. ",
+        {
+          "text": "How Vercel built Fluid compute",
+          "href": "https://vercel.com/blog/fluid-how-we-built-serverless-servers"
+        }
+      ]
+    },
+    {
+      "type": "image",
+      "src": "/images/vercel-function-streaming.avif",
+      "alt": "Vercel streaming architecture connects the function router and Lambda instances.",
+      "caption": "Vercel’s original streaming architecture · source: Vercel",
+      "width": 1920,
+      "height": 666
+    },
+    {
+      "type": "paragraph",
+      "text": ["The part I found most interesting was that there are two different kinds of concurrency here. In Lingo, the browser sends one batch to FastAPI, and FastAPI makes several OpenAI calls concurrently within that one incoming request. With Fluid compute, Vercel can let multiple incoming FastAPI requests overlap on the same function instance. While one request is waiting on an external API, the instance can make progress on another request. Reusing instances this way can reduce cold starts. ", {"text": "Vercel’s Fluid compute docs", "href": "https://vercel.com/docs/fluid-compute"}]
+    },
+    {
+      "type": "image",
+      "src": "/images/vercel-function-router.avif",
+      "alt": "Vercel Function Router sends a second request to an instance while its first request is still in progress.",
+      "caption": "Vercel’s Function Router · source: Vercel",
+      "width": 1920,
+      "height": 844
+    },
+    {
+      "type": "heading",
+      "text": "conclusion"
+    },
+    {
+      "type": "paragraph",
+      "text": "For Khanh’s use case, sending flashcard batches one at a time and keeping the page open were acceptable tradeoffs. Lingo does what I built it to do, and PDF parsing is still the biggest rough edge. If I turned it into a consumer app, I’d look at uploading large PDFs directly to something like S3 and processing them in the background. That way, users could leave the page and come back to their results. I’d also measure how long large files take to process and what they cost before deciding how much of the architecture to change."
+    },
+    {
+      "type": "paragraph",
+      "text": "I leaned on AI for implementation and to bounce around ideas. A lot of my work was figuring out which ideas fit the project and tweaking them until they worked for Khanh. I’m happy with what I learned, and I think I can use it on upcoming projects like Scent Radar, my fragrance price tracking platform."
+    }
+  ]
+},
 {
   "id": "c8e2b71",
   "date": "2026-11-16",
