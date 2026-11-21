@@ -8,6 +8,7 @@ type Project = {
   href: string;
   action: string;
   codeHref?: string;
+  blogHref?: string;
   note?: string;
 };
 
@@ -22,13 +23,14 @@ const featured: Project[] = [
   },
   {
     title: "Lingo",
-    stack: "Codex · FastAPI · Next.js · AI Development",
-    description: "Built for my Vanguard mentor, Khanh Tran, as a stakeholder project for Purdue's ECE 570 AI class. Lingo helps him learn Arabic through immersion in text, books, movies, and other Arabic media. AI previews what he plans to read or watch and creates flashcards of key vocabulary to study beforehand, so he can spend less time pausing to look up words.",
+    stack: "Codex · FastAPI · Next.js · AI Development · Serverless Architecture",
+    description: "Built for my Vanguard mentor, Khanh Tran, as a stakeholder project for Purdue's ECE 570 AI class. Lingo creates Arabic vocabulary flashcards from books and movie subtitles so he can study before immersing himself in the media. I developed it with AI and designed a serverless architecture on Vercel to process large files and generate cards within its hosting constraints.",
     status: "Academic project",
     href: "https://language-media-prep-frontend.vercel.app/",
     action: "Try the app",
     codeHref: "https://github.com/hitaesh77/language-media-prep",
-    note: "My main goal was to learn how to develop with AI. I tried an AGENTS.md file, a progress log updated throughout development, and a record of design decisions. I used test-driven development: describing functionality and writing tests before implementation let me review the expected behavior and gave the AI a way to validate its work. I also went back and forth with the LLM to refine the frontend design.",
+    blogHref: "/blog/a-deep-dive-into-lingo-architecture-and-vercel-fluid-compute",
+    note: "My main goal was to learn how to develop with AI. I tried an AGENTS.md file, a progress log updated throughout development, and a record of design decisions. I used test-driven development: describing functionality and writing tests before implementation let me review the expected behavior and gave the AI a way to validate its work. I also went back and forth with the LLM to refine the frontend design. For the serverless architecture, I designed the browser to split large files and send batches to the backend, working around Vercel's request limits without adding a database or external storage.",
   },
   {
     title: "Findify",
@@ -82,6 +84,9 @@ function ProjectCard({ project, compact = false }: { project: Project; compact?:
     </a>
     {project.codeHref && <a href={project.codeHref} target="_blank" rel="noopener noreferrer" aria-label={`View code: ${project.title}`} className="inline-flex min-h-8 items-center gap-1.5 text-[11px] text-[var(--text-secondary)] no-underline transition-colors hover:text-[var(--text-primary)] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--text-primary)]">
       View code<ArrowUpRight size={13} strokeWidth={1.5} aria-hidden="true" />
+    </a>}
+    {project.blogHref && <a href={project.blogHref} className="inline-flex min-h-8 items-center gap-1.5 text-[11px] text-[var(--text-secondary)] no-underline transition-colors hover:text-[var(--text-primary)] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--text-primary)]">
+      Read the architecture post<ArrowRight size={13} strokeWidth={1.5} aria-hidden="true" />
     </a>}
     </div>
   </article>;

@@ -13,8 +13,10 @@ type TabName = "About" | "Experience" | "Projects" | "Tech" | "Resume" | "Contac
 const tabs: TabName[] = ["About", "Experience", "Projects", "Tech", "Resume", "Contact"];
 
 const languageSkills = ["C++", "C", "Python", "Java", "TypeScript", "SQL", "SystemVerilog"];
-const frameworksCloudSkills = ["Spring Boot", "FastAPI", "React", "Next.js", "Angular", "AWS Lambda", "S3", "API Gateway", "Bedrock"];
-const databasesToolsSkills = ["PostgreSQL", "MySQL", "SQLite", "Git", "Linux", "Docker", "GCP", "REST APIs", "FHIR", "Jira"];
+const frameworkSkills = ["FastAPI", "Flask", "React", "Next.js", "Angular", "Spring Boot"];
+const cloudSkills = ["AWS", "Lambda", "S3", "API Gateway", "Bedrock", "GCP"];
+const databaseSkills = ["PostgreSQL", "MySQL", "SQLite", "DynamoDB"];
+const toolsSkills = ["Git", "Linux", "Docker", "REST APIs", "FHIR", "Jira"];
 function GithubIcon() {
   return (
     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
@@ -92,16 +94,16 @@ function StatusHero() {
 
 function SkillGroup({ title, skills }: { title: string; skills: string[] }) {
   return (
-    <div>
-      <p className="mb-3 font-mono text-[10px] uppercase tracking-[0.15em] text-[var(--text-faint)]">{title}</p>
-      <div className="flex flex-wrap gap-2">
+    <section className="grid gap-3 border-b border-[var(--border)] py-5 sm:grid-cols-[150px_1fr] sm:gap-5">
+      <h3 className="m-0 pt-1 font-mono text-[10px] font-normal uppercase tracking-[0.15em] text-[var(--text-faint)]">{title}</h3>
+      <ul className="m-0 flex list-none flex-wrap gap-x-5 gap-y-2 p-0">
         {skills.map((skill) => (
-          <span className="relative z-0 overflow-hidden rounded-lg border border-[var(--border)] px-3 py-1.5 text-[12px] text-[var(--text-secondary)] transition-colors duration-300 before:absolute before:inset-0 before:-z-10 before:translate-y-full before:bg-[var(--accent)] before:transition-transform before:duration-300 hover:border-[var(--accent)] hover:text-[var(--selection-text)] hover:before:translate-y-0" key={skill}>
+          <li className="text-[12px] leading-[1.7] text-[var(--text-secondary)]" key={skill}>
             {skill}
-          </span>
+          </li>
         ))}
-      </div>
-    </div>
+      </ul>
+    </section>
   );
 }
 
@@ -151,23 +153,26 @@ export default function Page() {
           </p>
         </header>
 
-        <nav aria-label="Writing and daily practice" className="mb-4 grid grid-cols-2 gap-3 max-[360px]:grid-cols-1">
+        <nav aria-label="Writing and daily practice" className="mb-4">
+          <p className="mb-2.5 font-mono text-[10px] uppercase tracking-[0.15em] text-[var(--text-muted)]">Featured links</p>
+          <div className="grid grid-cols-2 gap-3 max-[360px]:grid-cols-1">
           {[
-            { href: "/leetcode", title: "LeetCode", description: "My practice log" },
             { href: "/blog", title: "Blog", description: "My notes and thoughts" },
+            { href: "/leetcode", title: "LeetCode", description: "My practice log" },
           ].map((link) => (
-            <Link key={link.href} href={link.href} className="group rounded-[10px] border border-[var(--border)] px-4 py-3.5 no-underline transition-colors duration-300 hover:border-[var(--border-strong)] hover:bg-[var(--surface)] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--text-primary)]">
-              <span className="flex items-center justify-between gap-3 text-[12px] font-medium text-[var(--text-primary)]">
+            <Link key={link.href} href={link.href} className="group rounded-[10px] border border-[var(--border-strong)] bg-[var(--surface)] px-4 py-4 no-underline shadow-[0_4px_16px_var(--shadow)] transition-colors duration-300 hover:border-[var(--text-muted)] hover:bg-[var(--surface-hover)] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--text-primary)]">
+              <span className="flex items-center justify-between gap-3 text-[14px] font-medium text-[var(--text-primary)]">
                 {link.title}<ArrowUpRight size={14} strokeWidth={1.5} aria-hidden="true" className="shrink-0 text-[var(--text-muted)] transition-transform duration-300 group-hover:translate-x-0.5" />
               </span>
-              <span className="mt-1.5 block text-[10px] leading-relaxed text-[var(--text-secondary)]">{link.description}</span>
+              <span className="mt-1.5 block text-[11px] leading-relaxed text-[var(--text-secondary)]">{link.description}</span>
             </Link>
           ))}
+          </div>
         </nav>
 
         <div className="mb-9 grid grid-cols-2 gap-3 max-[360px]:grid-cols-1">
-          <BombPartyCard compact />
           <LingoCard compact />
+          <BombPartyCard compact />
         </div>
 
         <nav className="mount mount-d3 mb-10 border-b border-[var(--border)]">
@@ -318,10 +323,12 @@ export default function Page() {
           {activeTab === "Projects" && <Projects />}
 
           {activeTab === "Tech" && (
-            <section className="tab-in grid gap-8">
+            <section className="tab-in border-t border-[var(--border)]" aria-label="Tech stack">
               <SkillGroup title="Languages" skills={languageSkills} />
-              <SkillGroup title="Frameworks / Cloud" skills={frameworksCloudSkills} />
-              <SkillGroup title="Databases / Tools" skills={databasesToolsSkills} />
+              <SkillGroup title="Frameworks" skills={frameworkSkills} />
+              <SkillGroup title="Cloud" skills={cloudSkills} />
+              <SkillGroup title="Databases" skills={databaseSkills} />
+              <SkillGroup title="Tools / APIs" skills={toolsSkills} />
             </section>
           )}
 

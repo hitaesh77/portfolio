@@ -35,7 +35,7 @@ export const blogEntries: BlogEntry[] = [
     },
     {
       "type": "paragraph",
-      "text": ["I built Lingo for ECE 570, where I was tasked with creating an AI-native app for a specific stakeholder. I reached out to my mentor from Vanguard, ", {"text": "Khanh Tran", "href": "https://www.linkedin.com/in/khanh-tran-544a34208/"}, ", who was learning Arabic and wanted a way to learn vocabulary before reading books or watching movies. The idea was that he could make flashcards for important words before immersing himself in the media, so he could spend more time actually reading or watching and less time pausing to look things up."]
+      "text": ["I built ", {"text": "Lingo", "href": "https://language-media-prep-frontend.vercel.app/"}, " for ", {"text": "Purdue’s ECE 570", "href": "https://engineering.purdue.edu/ECE/Academics/Graduates/Undergraduates/UGO/CourseInfo/courseInfo?courseid=71&show=true&type=grad"}, ", where I was tasked with creating an AI-native app for a specific stakeholder. I reached out to my mentor from Vanguard, ", {"text": "Khanh Tran", "href": "https://www.linkedin.com/in/khanh-tran-544a34208/"}, ", who was learning Arabic and wanted a way to learn vocabulary before reading books or watching movies. The idea was that he could make flashcards for important words before immersing himself in the media, so he could spend more time actually reading or watching and less time pausing to look things up."]
     },
     {
       "type": "paragraph",
