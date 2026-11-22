@@ -6,7 +6,7 @@ import ThemeToggle from "./components/theme-toggle";
 import Projects from "./components/projects";
 import BombPartyCard from "./components/bomb-party-card";
 import LingoCard from "./components/lingo-card";
-import { ArrowUpRight, BookOpen } from "lucide-react";
+import { ArrowUpRight, Quote } from "lucide-react";
 
 type TabName = "About" | "Experience" | "Projects" | "Tech" | "Resume" | "Contact";
 
@@ -130,8 +130,8 @@ export default function Page() {
             <div className="flex items-center gap-4 pt-2">
               <ThemeToggle />
 
-              <a href="https://aureum-focus-2351.solarporpoise128.chatgpt.site/" target="_blank" rel="noopener noreferrer" className="text-[var(--text-faint)] transition-colors duration-300 hover:text-[var(--text-primary)]" aria-label="Study space" title="Study space">
-                <BookOpen size={16} strokeWidth={1.5} aria-hidden="true" />
+              <a href="/aureum" target="_blank" rel="noopener noreferrer" className="text-[var(--text-faint)] transition-colors duration-300 hover:text-[var(--text-primary)]" aria-label="Aureum" title="Aureum">
+                <Quote size={16} strokeWidth={1.5} aria-hidden="true" />
               </a>
 
               <a href="https://github.com/hitaesh77" target="_blank" rel="noopener noreferrer" className="text-[var(--text-faint)] transition-colors duration-300 hover:text-[var(--text-primary)]" aria-label="GitHub">
